@@ -12,7 +12,7 @@ PUBLISHED = "2026-09-23"
 # 運営会社（所在地は未提供のため掲載しない。追加する場合は build.py の org() と about_page() へ）
 COMPANY = {"name": "株式会社ハブグラム", "email": "all@hubgram.jp"}
 # フォーム送信先：FormSubmit（メール転送サービス。初回送信時に all@hubgram.jp へ届く認証メールの Activate を押すと有効化）
-FORM_ENDPOINT = "https://formsubmit.co/all@hubgram.jp"
+FORM_ENDPOINT = "https://formsubmit.co/tkinoshita@hubgram.jp"
 PRIVACY_DATE = "2026年9月25日"
 
 ENTITY = {
