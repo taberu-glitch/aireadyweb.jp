@@ -139,7 +139,7 @@ def page(path, title, desc, body, crumbs, ld_graph, noindex=False, extra_head=""
 {body}
 </main>
 {footer(depth)}
-<script>window.AIRW_CONFIG={{FORM_ENDPOINT:"{FORM_ENDPOINT}"}};</script>
+<script>window.AIRW_CONFIG={{FORM_ENDPOINT:"{FORM_ENDPOINT}",THANKS_URL:"{THANKS_URL}"}};</script>
 <script src="{R}assets/site.js"></script>
 {extra_scripts}
 </body>
@@ -345,7 +345,7 @@ def service_page():
     ]
     page(path, "AI Ready Web｜AI検索・SEOを考慮したWebサイト制作サービス", "AI Ready Webは、企業情報を整理し、人・検索エンジン・AIのいずれからも理解されやすいWebサイトを企画・設計・制作するサービスです。対象・課題・4つの設計思想・料金プラン・制作の流れを説明します。", body, [("ホーム",""),("サービス",path)], ld)
 
-def form_html(depth, default_topic="check"):
+def form_html(depth, default_topic="check", path=""):
     R = rel(depth)
     opts = [("check","無料AI検索診断を申し込む"),("consult","料金・制作について相談する"),("plan-start","STARTプランについて相談する"),("plan-ready","AI READYプランについて相談する"),("plan-growth","GROWTHプランについて相談する"),("subscription","月額型プラン（Subscription）について相談する"),("growth","AI Search Growth（継続運用）について相談する")]
     o = "".join(f'<option value="{v}"{" selected" if v==default_topic else ""}>{t}</option>' for v,t in opts)
@@ -367,9 +367,8 @@ def form_html(depth, default_topic="check"):
     </div>
     <div class="field"><label for="f-question">お客様がAIに聞きそうな質問 <span class="opt">任意</span></label><textarea id="f-question" name="question" placeholder="例：世田谷区でおすすめの工務店は？"></textarea><p class="help">思いつかない場合は空欄でも大丈夫です。業種や地域からこちらで設定します。</p><p class="help hearing-note" id="f-hearing-note" hidden>セルフ診断の回答内容を添えて送信します。</p><input type="hidden" id="f-hearing" name="hearing" value=""></div>
     <input type="hidden" name="_subject" value="【AI Ready Web】お問い合わせ・無料診断のお申し込み">
-    <input type="hidden" name="_next" value="{SITE_URL}contact/thanks/">
-    <input type="hidden" name="_template" value="table">
-    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <input type="hidden" name="page" value="{SITE_URL}{path}">
+    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
     <div class="check"><input type="checkbox" id="f-privacy" name="privacy" required><label for="f-privacy"><a href="{R}privacy/" target="_blank" rel="noopener">プライバシーポリシー</a>に同意する <span class="req">必須</span></label></div>
     <div class="form-actions"><button class="btn btn-primary" type="submit" id="form-submit">{btn}</button><p class="form-status" id="form-status" tabindex="-1" hidden></p></div>
   </form>
@@ -421,7 +420,7 @@ def check_page():
       {hearing_panel()}
       <p class="note" style="margin-top:.8rem">セルフ診断はご入力内容にもとづく簡易チェックです。AI上での実際の表示状況はレポートで確認します。</p>
     </div>
-    {form_html(depth, "check")}
+    {form_html(depth, "check", path)}
   </div>
 
   <article class="doc" style="margin-top:clamp(3rem,6vw,4.5rem)">
@@ -695,7 +694,7 @@ def contact_page():
         <li><b>AI Search Growth（継続運用）</b><span>公開後の観測と改善。月額39,800円〜。</span></li>
       </ul>
     </div>
-    {form_html(depth, "consult")}
+    {form_html(depth, "consult", path)}
   </div>
 </div>'''
     url = SITE_URL + path
@@ -810,8 +809,8 @@ def readme(urls):
 1. 本番URL：`https://aireadyweb.jp/` に設定済み（canonical / og:url / JSON-LD / sitemap / robots）。
    変更する場合は src/content.py の SITE_URL と、index.html 内の URL を置換して再ビルド。www を使う場合は www → 非www へリダイレクトを設定。
 2. 運営会社：株式会社ハブグラム（about/ と Organization に設定済み）。所在地を掲載する場合は src/content.py の COMPANY と build.py の org() / about_page() に追加。
-3. フォーム送信先：FormSubmit（https://formsubmit.co/all@hubgram.jp）に設定済み。
-   ★初回の送信後、all@hubgram.jp に届く「Activate Form」メールのリンクを押すまでメールは転送されません（1回だけ）。
+3. フォーム送信先：Formspree（src/content.py の FORM_ENDPOINT）。送信は JavaScript から行い、成功したら /contact/thanks/ に移動します。
+   届いた内容は Formspree の管理画面（https://formspree.io/forms）でも確認できます。無料プランは月50件まで。
    送信後は /contact/thanks/ に戻ります。別のサービスに変える場合は src/content.py の FORM_ENDPOINT と index.html の CONFIG.FORM_ENDPOINT。
 4. プライバシーポリシー：/privacy/ を作成済み（制定日 2026-09-25）。公開前に内容を確認し、必要なら法務レビュー。
 5. Research レポート：実施後に数値を記入 → noindex を外す → sitemap に追加。存在しない数値は記載しない。

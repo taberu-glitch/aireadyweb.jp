@@ -11,8 +11,11 @@ PUBLISHED = "2026-09-23"
 
 # 運営会社（所在地は未提供のため掲載しない。追加する場合は build.py の org() と about_page() へ）
 COMPANY = {"name": "株式会社ハブグラム", "email": "all@hubgram.jp"}
-# フォーム送信先：FormSubmit（メール転送サービス。初回送信時に all@hubgram.jp へ届く認証メールの Activate を押すと有効化）
-FORM_ENDPOINT = "https://formsubmit.co/tkinoshita@hubgram.jp"
+# フォーム送信先：Formspree（https://formspree.io/ の管理画面で作成したフォームのエンドポイント）
+# ・通知メールは Formspree アカウントのメールアドレスに届く。届いた内容は管理画面でも確認できる
+# ・空文字にするとプレビュー扱い（送信されない）
+FORM_ENDPOINT = "https://formspree.io/f/xyezpool"
+THANKS_URL = "https://aireadyweb.jp/contact/thanks/"  # 送信完了後に戻るページ
 PRIVACY_DATE = "2026年9月25日"
 
 ENTITY = {

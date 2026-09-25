@@ -1332,9 +1332,8 @@ table.compare{width:100%;border-collapse:collapse;min-width:560px}
           <input type="hidden" id="f-hearing" name="hearing" value="">
         </div>
         <input type="hidden" name="_subject" value="【AI Ready Web】お問い合わせ・無料診断のお申し込み">
-        <input type="hidden" name="_next" value="https://aireadyweb.jp/contact/thanks/">
-        <input type="hidden" name="_template" value="table">
-        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="page" value="https://aireadyweb.jp/">
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="check">
           <input type="checkbox" id="f-privacy" name="privacy" required>
           <label for="f-privacy"><a href="privacy/" target="_blank" rel="noopener">プライバシーポリシー</a>に<wbr>同意する <span class="req">必須</span></label>
@@ -1483,7 +1482,10 @@ table.compare{width:100%;border-collapse:collapse;min-width:560px}
 /* =====================================================================
    設定：フォーム送信先はここで設定します（未設定のままではプレビュー扱い）
    ===================================================================== */
-const CONFIG = { FORM_ENDPOINT: "https://formsubmit.co/tkinoshita@hubgram.jp" };  // FormSubmit：初回送信後に届く認証メールで有効化
+const CONFIG = {
+  FORM_ENDPOINT: "https://formspree.io/f/xyezpool",   // Formspree の管理画面で作成したフォームのエンドポイント
+  THANKS_URL: "https://aireadyweb.jp/contact/thanks/"     // 送信完了後に移動するページ
+};
 
 (function () {
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1534,21 +1536,38 @@ const CONFIG = { FORM_ENDPOINT: "https://formsubmit.co/tkinoshita@hubgram.jp" };
   });
   if (topic) topic.addEventListener("change", syncTopic);
 
-  // --- フォーム送信 ---
+  // --- フォーム送信（Formspree）：JavaScript から送信し、成功したら完了ページへ移動 ---
   var form = document.getElementById("contact-form");
   var status = document.getElementById("form-status");
   var preview = document.getElementById("form-preview");
   var hasEndpoint = typeof CONFIG.FORM_ENDPOINT === "string" && CONFIG.FORM_ENDPOINT.trim() !== "";
   if (hasEndpoint) { form.action = CONFIG.FORM_ENDPOINT; if (preview) preview.hidden = true; }
+  function showStatus(html) { status.innerHTML = html; status.hidden = false; status.focus(); }
   form.addEventListener("submit", function (e) {
     status.hidden = true;
     if (!form.checkValidity()) { e.preventDefault(); form.reportValidity(); return; }
     if (!hasEndpoint) {
       e.preventDefault();
-      status.innerHTML = "プレビュー表示のため、<wbr>送信は<wbr>行われていません。<wbr>公開前に、<wbr>フォームの<wbr>送信先を<wbr>設定してください。";
-      status.hidden = false;
-      status.focus();
+      showStatus("プレビュー表示のため、<wbr>送信は<wbr>行われていません。<wbr>公開前に、<wbr>フォームの<wbr>送信先を<wbr>設定してください。");
+      return;
     }
+    if (!window.fetch || !window.FormData) return;  // 古いブラウザは通常送信（Formspree側の完了画面）
+    e.preventDefault();
+    var label = submitBtn ? submitBtn.textContent : "";
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = "送信中…"; }
+    fetch(CONFIG.FORM_ENDPOINT, { method: "POST", body: new FormData(form), headers: { "Accept": "application/json" } })
+      .then(function (r) {
+        if (r.ok) { window.location.href = CONFIG.THANKS_URL || "contact/thanks/"; return; }
+        return r.json().catch(function () { return {}; }).then(function (d) {
+          var m = d && d.errors && d.errors.length ? d.errors.map(function (x) { return x.message; }).join(" / ") : (d && d.error) || ("HTTP " + r.status);
+          throw new Error(m);
+        });
+      })
+      .catch(function (err) {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = label; }
+        var safe = String(err.message).replace(/[<>&]/g, "");
+        showStatus("送信できませんでした。<wbr>時間をおいて<wbr>再度お試しいただくか、<wbr>all@hubgram.jp まで<wbr>メールで<wbr>ご連絡ください。（" + safe + "）");
+      });
   });
 
   // --- 追従CTA：フォーム・フッター表示中は隠す ---
