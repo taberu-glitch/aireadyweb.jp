@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI Ready Web｜あなたの会社、ChatGPTに聞いたら出てきますか？</title>
+<meta name="description" content="あなたの会社、ChatGPTに聞いたら出てきますか？ AI Ready Webは、人にも、Googleにも、AIにも理解されやすいWebサイトをつくる制作サービスです。まずは自社のAI検索状況を無料で診断。">
+<meta property="og:title" content="AI Ready Web｜AIにも見つけてもらえるホームページへ">
+<meta property="og:description" content="Web制作 × SEO × AI検索設計。人にも、Googleにも、AIにも伝わるWebサイトをつくります。まずは無料AI検索診断から。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aireadyweb.jp/">
+<link rel="canonical" href="https://aireadyweb.jp/">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;700&family=Instrument+Sans:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="assets/hearing.css">
+<style>
+/* =====================================================================
+   AI Ready Web — デザイントークン
+   ===================================================================== */
+:root{
+  color-scheme:light;
+  --bg:#FFFFFF;
+  --bg-alt:#F6F7F9;
+  --bg-deep:#111418;
+  --ink:#111418;
+  --text:#3A3F47;
+  --muted:#6B7280;
+  --line:#E5E7EB;
+  --line-strong:#CFD4DC;
+  --accent:#1F4FD0;          /* アクセントは1色のみ */
+  --accent-deep:#173FB0;
+  --accent-tint:#EAF0FF;
+  --accent-line:#C7D5F7;
+  --radius:16px;
+  --radius-sm:10px;
+  --shadow:0 20px 50px -24px rgba(17,20,24,.25);
+  --font-jp:"IBM Plex Sans JP","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-ui,sans-serif;
+  --font-en:"Instrument Sans","IBM Plex Sans JP",system-ui,sans-serif;
+  --header-h:68px;
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-jp);font-size:1rem;line-height:1.9;font-feature-settings:"palt";overflow-x:hidden;word-break:keep-all;overflow-wrap:anywhere;line-break:strict}
+h1,h2,h3,h4{color:var(--ink);margin:0;font-weight:700;text-wrap:balance;line-height:1.35;letter-spacing:-.01em}
+p{margin:0;text-wrap:pretty}
+ul,ol{margin:0;padding:0;list-style:none}
+a{color:var(--accent)}
+img{max-width:100%;display:block}
+:focus-visible{outline:3px solid var(--accent-line);outline-offset:3px;border-radius:4px}
+.wrap{width:min(100% - 2rem,1120px);margin-inline:auto}
+@media (min-width:901px){.wrap{width:min(100% - 4rem,1120px)}}
+.br-pc{display:none}
+@media (min-width:640px){.br-pc{display:inline}}
+.skip{position:absolute;left:1rem;top:-3rem;background:var(--ink);color:#fff;padding:.5rem 1rem;border-radius:8px;z-index:200;text-decoration:none}
+.skip:focus{top:1rem}
+.en{font-family:var(--font-en)}
+
+/* ---------- ボタン ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;border-radius:999px;font-weight:700;text-decoration:none;border:1px solid transparent;cursor:pointer;font-family:inherit;line-height:1.2;transition:transform .2s,background .2s,border-color .2s,box-shadow .2s;white-space:nowrap}
+.btn-primary{background:var(--ink);color:#fff;padding:1rem 1.6rem}
+.btn-primary:hover{background:#000;transform:translateY(-1px);box-shadow:0 10px 24px -12px rgba(17,20,24,.5)}
+.btn-primary::after{content:"";width:.45rem;height:.45rem;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-45deg);transition:transform .2s}
+.btn-primary:hover::after{transform:rotate(-45deg) translate(2px,2px)}
+.btn-lg{padding:1.15rem 2rem;font-size:1.05rem}
+.btn-sm{padding:.7rem 1.2rem;font-size:.9rem}
+.btn-ghost{background:#fff;color:var(--ink);border-color:var(--line-strong);padding:1rem 1.5rem}
+.btn-ghost:hover{border-color:var(--ink)}
+.link{display:inline-flex;align-items:center;gap:.4rem;font-weight:600;text-decoration:none;color:var(--ink);position:relative;padding:.4rem 0}
+.link::after{content:"";position:absolute;left:0;bottom:.15rem;width:100%;height:1px;background:var(--ink);transform:scaleX(.35);transform-origin:left;transition:transform .25s}
+.link:hover::after{transform:scaleX(1)}
+.cta-note{font-size:.85rem;color:var(--muted);margin-top:.8rem}
+
+/* ---------- セクション共通 ---------- */
+.section{padding-block:clamp(4.5rem,9vw,8rem)}
+.section-alt{background:var(--bg-alt)}
+.eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-family:var(--font-en);font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem}
+.eyebrow::before{content:"";width:1.4rem;height:1px;background:var(--accent)}
+.eyebrow .jp{font-family:var(--font-jp);letter-spacing:.06em;text-transform:none;font-weight:700;font-size:.82rem}
+.section-head{max-width:46rem;margin-bottom:clamp(2.2rem,4.5vw,3.75rem)}
+.section-head h2{font-size:clamp(1.65rem,1rem + 2vw,2.5rem);letter-spacing:-.02em}
+.section-head .lead{margin-top:1.25rem;font-size:1.02rem}
+.note{font-size:.88rem;color:var(--muted)}
+[id]{scroll-margin-top:calc(var(--header-h) + 1rem)}
+
+/* ---------- ヘッダー ---------- */
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:100;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:var(--header-h);position:relative}
+.brand{display:inline-flex;align-items:center;gap:.55rem;text-decoration:none;color:var(--ink);font-family:var(--font-en);font-weight:700;font-size:1.15rem;letter-spacing:-.01em}
+.brand i{width:.6rem;height:.6rem;border-radius:50%;background:var(--accent);display:inline-block}
+.menu-btn{display:inline-flex;align-items:center;gap:.5rem;background:#fff;border:1px solid var(--line-strong);border-radius:999px;padding:.5rem .9rem;font-family:inherit;font-weight:600;font-size:.85rem;color:var(--ink);cursor:pointer}
+.menu-icon{position:relative;width:1rem;height:.7rem;display:block}
+.menu-icon::before,.menu-icon::after,.menu-icon span{content:"";position:absolute;left:0;right:0;height:1.5px;background:var(--ink);transition:transform .25s,opacity .25s}
+.menu-icon::before{top:0}.menu-icon span{top:calc(50% - .75px)}.menu-icon::after{bottom:0}
+.menu-btn[aria-expanded="true"] .menu-icon::before{transform:translateY(.35rem) rotate(45deg)}
+.menu-btn[aria-expanded="true"] .menu-icon::after{transform:translateY(-.35rem) rotate(-45deg)}
+.menu-btn[aria-expanded="true"] .menu-icon span{opacity:0}
+.site-nav{display:none;position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid var(--line);padding:1rem 0 1.25rem;box-shadow:0 20px 40px -20px rgba(17,20,24,.2)}
+.site-nav.is-open{display:block}
+.site-nav ul{display:flex;flex-direction:column}
+.site-nav li a{display:block;padding:.8rem .25rem;text-decoration:none;color:var(--ink);font-weight:500;border-bottom:1px solid var(--line)}
+.site-nav li a:hover{color:var(--accent)}
+.site-nav .btn{margin-top:1rem;width:100%}
+@media (min-width:901px){
+  .menu-btn{display:none}
+  .site-nav,.site-nav.is-open{display:flex;position:static;align-items:center;gap:1.6rem;background:transparent;border:0;padding:0;box-shadow:none}
+  .site-nav ul{flex-direction:row;gap:1.5rem}
+  .site-nav li a{padding:.3rem 0;border:0;font-size:.92rem}
+  .site-nav .btn{margin:0;width:auto}
+}
+
+/* ---------- 01 ファーストビュー ---------- */
+.hero{padding-block:clamp(3rem,7vw,6.5rem) clamp(3.5rem,7vw,6.5rem);background:#fff}
+.hero-grid{display:grid;gap:3rem;align-items:center}
+@media (min-width:1001px){.hero-grid{grid-template-columns:1.05fr .95fr;gap:4rem}}
+.hero h1{font-size:clamp(2rem,1.1rem + 3vw,3.3rem);line-height:1.28;letter-spacing:-.025em;text-wrap:initial}
+.nw{white-space:nowrap}
+.hero-sub{margin-top:1.6rem;font-size:clamp(1.05rem,.95rem + .5vw,1.3rem);font-weight:700;color:var(--ink);line-height:1.7}
+.hero-lead{margin-top:1.1rem;max-width:34rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2rem;align-items:center}
+
+/* AIパネル（ファーストビューのビジュアル） */
+.ai-panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;max-width:560px;margin-inline:auto;width:100%}
+.ai-head{display:flex;align-items:center;gap:.6rem;padding:.8rem 1rem;border-bottom:1px solid var(--line);font-size:.82rem;color:var(--muted)}
+.ai-head i{width:.55rem;height:.55rem;border-radius:50%;background:var(--accent)}
+.ai-head .tag{margin-left:auto;font-size:.72rem;font-weight:600;padding:.15rem .6rem;border-radius:999px;background:var(--bg-alt);color:var(--muted);border:1px solid var(--line)}
+.ai-body{padding:1.1rem 1rem 1.2rem;display:grid;gap:.9rem}
+.msg{max-width:92%;font-size:.92rem;line-height:1.7}
+.msg.user{justify-self:end;background:var(--ink);color:#fff;border-radius:14px 14px 4px 14px;padding:.7rem 1rem;max-width:85%}
+.msg.ai{background:var(--bg-alt);border-radius:14px 14px 14px 4px;padding:.85rem 1rem;color:var(--text)}
+.ai-panel[data-stage] .msg{opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease}
+.ai-panel[data-stage="1"] .st1,.ai-panel[data-stage="2"] .st1,.ai-panel[data-stage="2"] .st2,.ai-panel[data-stage="3"] .st1,.ai-panel[data-stage="3"] .st2,.ai-panel[data-stage="3"] .st3{opacity:1;transform:none}
+.scan-label{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--muted);margin-bottom:.6rem}
+.scan-label i{width:.5rem;height:.5rem;border-radius:50%;background:var(--accent);opacity:.5}
+.ai-panel[data-stage="2"] .scan-label i{animation:blink 1s ease-in-out infinite}
+@keyframes blink{50%{opacity:1}}
+.sites{display:flex;flex-wrap:wrap;gap:.45rem}
+.site{font-size:.78rem;padding:.3rem .65rem;border-radius:999px;border:1px solid var(--line-strong);background:#fff;color:var(--text);display:inline-flex;align-items:center;gap:.4rem}
+.site.ready{border-color:var(--accent);color:var(--accent);font-weight:600}
+.site.ready::before{content:"";width:.45rem;height:.45rem;border-radius:50%;background:var(--accent)}
+.ai-panel[data-stage="2"] .site{animation:scan 1.3s ease-in-out infinite}
+.ai-panel[data-stage="2"] .site:nth-child(2){animation-delay:.25s}
+.ai-panel[data-stage="2"] .site:nth-child(3){animation-delay:.5s}
+.ai-panel[data-stage="2"] .site:nth-child(4){animation-delay:.75s}
+@keyframes scan{50%{background:var(--accent-tint);border-color:var(--accent-line)}}
+.cands{display:grid;gap:.45rem;margin-top:.6rem}
+.cands li{display:grid;grid-template-columns:1.4rem 1fr;gap:.5rem;align-items:start;background:#fff;border:1px solid var(--line);border-radius:10px;padding:.6rem .75rem}
+.cands li .n{font-family:var(--font-en);font-weight:700;color:var(--muted);font-size:.85rem;line-height:1.6}
+.cands li b{display:block;color:var(--ink);font-size:.9rem}
+.cands li span{display:block;font-size:.78rem;color:var(--muted);line-height:1.5}
+.cands li.ready{border-color:var(--accent);background:var(--accent-tint)}
+.cands li.ready .n{color:var(--accent)}
+.cands li.ready em{display:inline-block;font-style:normal;font-family:var(--font-en);font-weight:700;font-size:.68rem;letter-spacing:.08em;color:#fff;background:var(--accent);padding:.1rem .5rem;border-radius:999px;margin-top:.3rem}
+.hero-caption{font-size:.8rem;color:var(--muted);text-align:center;margin-top:.8rem}
+
+/* ---------- 02 検索行動の変化 ---------- */
+.lanes{display:grid;gap:1.25rem;margin-top:.5rem}
+
+.lane{border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem;background:#fff}
+@media (min-width:640px){.lane{display:grid;grid-template-columns:9rem 1fr;gap:1.5rem;align-items:center;padding:1.5rem 1.75rem}.lane-title{margin-bottom:0;flex-direction:column;align-items:flex-start;gap:.2rem}}
+.lane.now{border-color:var(--accent-line);background:var(--accent-tint)}
+.lane-title{display:flex;align-items:center;gap:.6rem;font-family:var(--font-en);font-weight:600;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1.1rem}
+.lane.now .lane-title{color:var(--accent)}
+.lane-title .jp{font-family:var(--font-jp);font-size:1rem;letter-spacing:0;text-transform:none;color:var(--ink);font-weight:700}
+.flow{display:grid;gap:.5rem}
+.flow li{position:relative;display:flex;align-items:center;gap:.8rem;background:#fff;border:1px solid var(--line);border-radius:10px;padding:.75rem 1rem;font-weight:500;color:var(--ink)}
+.flow li .k{font-family:var(--font-en);font-size:.75rem;font-weight:600;color:var(--muted);width:1.4rem}
+.flow li:not(:last-child)::after{content:"";position:absolute;left:1.6rem;bottom:-.55rem;width:.55rem;height:.55rem;border-right:1.5px solid var(--line-strong);border-bottom:1.5px solid var(--line-strong);transform:rotate(45deg);background:transparent}
+.lane.now .flow li{border-color:var(--accent-line)}
+.lane.now .flow li.hl{border-color:var(--accent);box-shadow:inset 3px 0 0 var(--accent)}
+@media (min-width:640px){
+  .flow{grid-template-columns:repeat(4,1fr);gap:1.2rem}
+  .flow li{flex-direction:column;align-items:flex-start;gap:.4rem;padding:.9rem 1rem}
+  .flow li:not(:last-child)::after{left:auto;right:-.95rem;bottom:auto;top:calc(50% - .3rem);transform:rotate(-45deg)}
+}
+.lanes-note{margin-top:1.5rem}
+
+/* ---------- 03 問題提起 ---------- */
+.problem-grid{display:grid;gap:2.5rem;align-items:center}
+@media (min-width:901px){.problem-grid{grid-template-columns:1fr 1fr;gap:4rem}}
+.problem-copy h2{font-size:clamp(1.7rem,1rem + 2.2vw,2.6rem);letter-spacing:-.02em}
+.problem-copy p{margin-top:1.2rem}
+.states{display:grid;gap:1rem}
+@media (min-width:560px){.states{grid-template-columns:1fr 1fr}}
+.state{border:1px solid var(--line);border-radius:var(--radius);padding:1.25rem;background:#fff;min-height:100%}
+.state-title{font-size:.8rem;font-weight:700;color:var(--muted);letter-spacing:.06em;margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem}
+.state.good{border-color:var(--accent-line)}
+.state.good .state-title{color:var(--accent)}
+.state-title::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:currentColor}
+.scatter{display:flex;flex-wrap:wrap;gap:.5rem}
+.scatter span{font-size:.8rem;padding:.35rem .7rem;border-radius:999px;border:1px dashed var(--line-strong);color:var(--muted);background:var(--bg-alt)}
+.scatter span:nth-child(2){margin-left:1.2rem}
+.scatter span:nth-child(4){margin-left:.6rem}
+.ordered{display:grid;gap:.4rem}
+.ordered li{display:flex;gap:.6rem;align-items:center;font-size:.84rem;line-height:1.55;color:var(--ink);padding:.45rem .7rem;border-radius:8px;background:var(--accent-tint)}
+.ordered li::before{content:"";width:.9rem;height:.9rem;border-radius:50%;border:1.5px solid var(--accent);flex:none;background:linear-gradient(transparent,transparent);position:relative}
+.ordered li i{display:none}
+
+/* ---------- 04 CONCEPT ---------- */
+.concept{background:var(--bg-deep);color:#C9CDD3}
+.concept .eyebrow{color:#9FB4F5}
+.concept .eyebrow::before{background:#9FB4F5}
+.concept h2{color:#fff;font-size:clamp(1.9rem,1rem + 2.8vw,3rem);letter-spacing:-.025em;line-height:1.3}
+.concept .lead{margin-top:1.4rem;max-width:40rem;color:#C9CDD3}
+.readers{display:grid;gap:1.25rem;margin-top:3rem;align-items:center}
+@media (min-width:901px){.readers{grid-template-columns:1fr auto 1.1fr;gap:2rem}}
+.site-card{background:#fff;color:var(--ink);border-radius:var(--radius);padding:1.4rem;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.site-card .sc-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+.site-card .sc-head b{font-size:1rem}
+.site-card .sc-head small{font-size:.72rem;color:var(--muted)}
+.site-card ul{display:grid;grid-template-columns:1fr 1fr;gap:.45rem}
+.site-card li{font-size:.82rem;padding:.5rem .7rem;border-radius:8px;background:var(--bg-alt);color:var(--text);display:flex;align-items:center;gap:.45rem}
+.site-card li::before{content:"";width:.35rem;height:.35rem;border-radius:50%;background:var(--accent);flex:none}
+.connect{display:none}
+@media (min-width:901px){
+  .connect{display:block;width:5rem;height:100%;position:relative;min-height:12rem}
+  .connect::before{content:"";position:absolute;left:0;top:50%;width:50%;height:1px;background:#3A414C}
+  .connect::after{content:"";position:absolute;left:50%;top:12%;bottom:12%;width:1px;background:#3A414C}
+  .connect i{position:absolute;left:50%;width:50%;height:1px;background:#3A414C}
+  .connect i:nth-child(1){top:12%}.connect i:nth-child(2){top:50%}.connect i:nth-child(3){bottom:12%}
+}
+.reader-list{display:grid;gap:.9rem}
+.reader{display:grid;grid-template-columns:3rem 1fr;gap:1rem;align-items:center;border:1px solid #2A3038;border-radius:14px;padding:1rem 1.1rem;background:#161A20}
+.reader .ic{width:3rem;height:3rem;border-radius:12px;background:#1F252D;display:grid;place-items:center;color:#fff}
+.reader .ic svg{width:1.4rem;height:1.4rem}
+.reader b{display:block;color:#fff;font-size:1.05rem}
+.reader span{display:block;font-size:.88rem;color:#A7ADB6;line-height:1.6}
+.reader.ai{border-color:#3E5BB8}
+.reader.ai .ic{background:var(--accent)}
+
+/* ---------- 05 AI READY WEBとは ---------- */
+.pillars{display:grid;gap:1rem;margin-top:.5rem}
+@media (min-width:768px){.pillars{grid-template-columns:repeat(3,1fr);gap:1.25rem}}
+.pillar{border-top:2px solid var(--ink);padding-top:1.2rem}
+.pillar .en{font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.pillar h3{font-size:1.25rem;margin:.3rem 0 .6rem}
+.pillar p{font-size:.95rem}
+.pillar.acc{border-top-color:var(--accent)}
+.pillar.acc .en{color:var(--accent)}
+.times{display:flex;align-items:center;gap:1rem;margin:2.5rem 0 .5rem;flex-wrap:wrap}
+.times b{font-family:var(--font-en);font-size:clamp(1.1rem,1rem + .8vw,1.5rem);font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.times span{font-family:var(--font-en);color:var(--muted);font-weight:500}
+.chain{display:grid;gap:.6rem;margin-top:3rem;align-items:center}
+@media (min-width:768px){.chain{grid-template-columns:1fr auto 1fr auto 1.4fr auto 1fr}}
+.chain .node{border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-align:center;font-weight:700;color:var(--ink);background:#fff}
+.chain .node small{display:block;font-weight:500;color:var(--muted);font-size:.78rem;margin-top:.2rem}
+.chain .node.multi{display:grid;gap:.4rem;padding:.7rem}
+.chain .node.multi span{border-radius:8px;padding:.45rem .6rem;font-size:.9rem;background:var(--bg-alt)}
+.chain .node.multi span.acc{background:var(--accent-tint);color:var(--accent)}
+.chain .arrow{color:var(--line-strong);text-align:center;font-size:1.2rem;line-height:1}
+.chain .arrow::before{content:"↓"}
+@media (min-width:768px){.chain .arrow::before{content:"→"}}
+.steps3{display:grid;gap:1rem;margin-top:3.5rem}
+@media (min-width:768px){.steps3{grid-template-columns:repeat(3,1fr);gap:1.25rem}}
+.step3{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem;position:relative}
+.step3 .en{font-size:.72rem;font-weight:600;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.step3 .verb{position:absolute;right:1.25rem;top:1.25rem;font-size:.85rem;font-weight:700;color:var(--ink);background:var(--bg-alt);padding:.2rem .7rem;border-radius:999px}
+.step3 h3{font-size:1.2rem;margin:.4rem 0 .5rem}
+.step3 p{font-size:.92rem}
+.step3.acc{border-color:var(--accent-line)}
+.step3.acc .verb{background:var(--accent-tint);color:var(--accent)}
+
+/* ---------- 06 4つの特徴 ---------- */
+.features{display:grid;gap:0;border-top:1px solid var(--line)}
+@media (min-width:768px){.features{grid-template-columns:1fr 1fr}}
+.feature{padding:2rem 0 2rem;border-bottom:1px solid var(--line);display:grid;grid-template-columns:3.5rem 1fr;gap:1rem}
+@media (min-width:768px){
+  .feature{padding:2.25rem 2.25rem 2.25rem 0}
+  .feature:nth-child(even){padding-left:2.25rem;padding-right:0;border-left:1px solid var(--line)}
+}
+.feature .num{font-family:var(--font-en);font-weight:600;font-size:1.6rem;color:var(--accent);line-height:1.1;letter-spacing:-.02em}
+.feature h3{font-size:1.15rem;margin-bottom:.5rem}
+.feature p{font-size:.95rem}
+.feature .q{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
+.feature .q span{font-size:.78rem;padding:.25rem .6rem;border-radius:999px;background:var(--bg-alt);color:var(--muted)}
+
+/* ---------- 07 比較表 ---------- */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:#fff}
+table.compare{width:100%;border-collapse:collapse;min-width:560px}
+.compare caption{text-align:left;padding:1rem 1.25rem;font-size:.85rem;color:var(--muted);border-bottom:1px solid var(--line)}
+.compare th,.compare td{padding:.95rem 1.25rem;text-align:left;border-bottom:1px solid var(--line);font-size:.95rem;vertical-align:middle}
+.compare thead th{font-size:.85rem;color:var(--muted);font-weight:600;background:var(--bg-alt)}
+.compare thead th.acc{color:var(--accent);background:var(--accent-tint)}
+.compare tbody th{font-weight:600;color:var(--ink);width:38%}
+.compare td{text-align:center;color:var(--muted)}
+.compare td.acc{background:var(--accent-tint)}
+.compare tbody tr:last-child th,.compare tbody tr:last-child td{border-bottom:0}
+.mark{display:inline-grid;place-items:center;width:1.5rem;height:1.5rem;border-radius:50%;font-size:.8rem;font-weight:700}
+.mark.full{background:var(--accent);color:#fff;font-size:0}
+.mark.part{border:1.5px solid var(--line-strong);color:var(--muted)}
+.mark.dep{color:var(--muted)}
+.mark.none{color:var(--line-strong)}
+.compare td small{display:block;font-size:.75rem;color:var(--muted);margin-top:.25rem}
+.legend{display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;margin-top:1rem;font-size:.82rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+
+/* ---------- 08 無料AI検索診断 ---------- */
+.check-head{display:grid;gap:2rem;align-items:end;margin-bottom:2.5rem}
+@media (min-width:901px){.check-head{grid-template-columns:1.1fr .9fr;gap:3rem}}
+.qs{display:grid;gap:.5rem}
+.qs li{font-size:.9rem;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:999px;padding:.55rem 1rem;display:flex;gap:.6rem;align-items:center}
+.qs li::before{content:"Q";font-family:var(--font-en);font-weight:700;color:var(--accent);font-size:.8rem}
+.qs-title{font-size:.8rem;font-weight:700;color:var(--muted);letter-spacing:.06em;margin-bottom:.6rem}
+.dash{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.dash-head{display:flex;align-items:center;gap:.8rem;padding:.9rem 1.25rem;border-bottom:1px solid var(--line);font-size:.9rem;font-weight:600;color:var(--ink)}
+.dash-head .sample{margin-left:auto;font-size:.72rem;font-weight:600;color:var(--muted);background:var(--bg-alt);border:1px solid var(--line);padding:.15rem .6rem;border-radius:999px}
+.dash-body{display:grid;gap:1.5rem;padding:1.5rem 1.25rem}
+@media (min-width:901px){.dash-body{grid-template-columns:1fr 1fr;gap:2rem;padding:1.75rem}}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+.kpi{border:1px solid var(--line);border-radius:12px;padding:.9rem .9rem .8rem}
+.kpi small{display:block;font-size:.75rem;color:var(--muted);margin-bottom:.3rem}
+.kpi b{display:block;font-family:var(--font-en);font-size:clamp(1.6rem,1.2rem + 1vw,2.2rem);line-height:1.1;color:var(--ink);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.kpi b i{font-style:normal;font-size:.6em;color:var(--muted);margin-left:.1em}
+.kpi span{display:block;font-size:.72rem;color:var(--muted);margin-top:.35rem;line-height:1.45}
+.kpi.acc{border-color:var(--accent-line);background:var(--accent-tint)}
+.kpi.acc b{color:var(--accent)}
+.bars-title,.find-title{font-size:.8rem;font-weight:600;color:var(--muted);margin-bottom:.7rem}
+.bars{display:grid;gap:.6rem}
+.bar{display:grid;grid-template-columns:5.5rem 1fr 4.5rem;align-items:center;gap:.7rem;font-size:.85rem;color:var(--ink)}
+.bar i{display:block;height:.6rem;border-radius:4px;background:var(--line-strong);width:var(--w)}
+.bar b{font-family:var(--font-en);font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums;text-align:right;font-size:.85rem}
+.bar.you span{font-weight:700}
+.bar.you i{background:var(--accent)}
+.bar.you b{color:var(--accent)}
+.findings{display:grid;gap:.5rem}
+.finding{display:grid;grid-template-columns:7rem 1fr;gap:.6rem;align-items:start;padding:.65rem .8rem;border-radius:10px;background:var(--bg-alt);font-size:.85rem}
+.finding small{color:var(--muted);font-size:.78rem;line-height:1.6}
+.finding b{color:var(--ink);font-weight:600;line-height:1.6}
+.dash-foot{padding:.8rem 1.25rem;border-top:1px solid var(--line);font-size:.75rem;color:var(--muted)}
+.insight{display:grid;gap:1rem;margin-top:2.5rem}
+@media (min-width:768px){.insight{grid-template-columns:repeat(3,auto);justify-content:start;align-items:center;gap:1rem}}
+.insight li{display:flex;align-items:center;gap:1rem}
+.insight .box{border:1px solid var(--line-strong);border-radius:999px;padding:.6rem 1.2rem;font-weight:700;color:var(--ink);background:#fff;font-size:.95rem}
+.insight li:not(:last-child)::after{content:"→";color:var(--line-strong);display:none}
+@media (min-width:768px){.insight li:not(:last-child)::after{display:inline}}
+.cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.5rem;margin-top:2.25rem}
+
+/* ---------- 09 制作プロセス ---------- */
+.process{display:grid;gap:0;position:relative;counter-reset:p}
+.process li{position:relative;display:grid;grid-template-columns:2.4rem 1fr;gap:1rem;padding-bottom:1.5rem;align-content:start}
+.process li::before{content:"";position:absolute;left:calc(1.2rem - .5px);top:2.4rem;bottom:0;width:1px;background:var(--line-strong)}
+.process li:last-child::before{display:none}
+.process li:last-child{padding-bottom:0}
+.process .dot{width:2.4rem;height:2.4rem;border-radius:50%;border:1.5px solid var(--ink);display:grid;place-items:center;font-family:var(--font-en);font-weight:600;font-size:.85rem;color:var(--ink);background:#fff}
+.process li.acc .dot{background:var(--ink);color:#fff}
+.process h3{font-size:1rem;margin-top:.45rem}
+.process p{font-size:.85rem;color:var(--muted)}
+@media (min-width:1001px){
+  .process{grid-template-columns:repeat(9,1fr);gap:.75rem}
+  .process li{grid-template-columns:1fr;grid-template-rows:subgrid;grid-row:span 3;row-gap:.6rem;padding-bottom:0}
+  .process li>div{display:contents}
+  .process li::before{left:2.4rem;right:-.75rem;top:calc(1.2rem - .5px);bottom:auto;height:1px;width:auto}
+  .process h3{margin-top:0;font-size:.95rem}
+}
+
+/* ---------- 10 料金 / 11 継続運用 ---------- */
+.price-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:clamp(1.5rem,3vw,2.5rem);display:grid;gap:1.5rem}
+@media (min-width:901px){.price-card{grid-template-columns:1fr 1.3fr;gap:3rem}}
+.price-card .en{font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.price-card h3{font-size:1.5rem;margin:.3rem 0 .8rem}
+.price{display:flex;align-items:baseline;gap:.2rem;color:var(--ink)}
+.price .num{font-family:var(--font-en);font-weight:700;font-size:clamp(2.6rem,2rem + 2vw,3.6rem);line-height:1;letter-spacing:-.03em}
+.price .unit{font-weight:700;font-size:1.2rem}
+.price .from{font-weight:500;color:var(--muted);font-size:1rem;margin-left:.2rem}
+.price-note{margin-top:.8rem;font-size:.88rem;color:var(--muted)}
+.incl-title{font-size:.8rem;font-weight:700;color:var(--muted);letter-spacing:.06em;margin-bottom:.8rem}
+.incl{display:grid;gap:.45rem .5rem}
+@media (min-width:560px){.incl{grid-template-columns:1fr 1fr}}
+.incl li{display:flex;gap:.6rem;align-items:flex-start;font-size:.92rem;color:var(--ink);padding:.45rem 0;border-bottom:1px solid var(--line)}
+.incl li::before{content:"";width:.95rem;height:.95rem;flex:none;margin-top:.45rem;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='8' fill='%231F4FD0'/%3E%3Cpath d='M4.5 8.2l2.3 2.3 4.7-4.8' fill='none' stroke='%23fff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+.growth-grid{display:grid;gap:2rem;align-items:start}
+@media (min-width:901px){.growth-grid{grid-template-columns:1fr 1fr;gap:4rem}}
+.growth-card{background:var(--bg-deep);color:#C9CDD3;border-radius:var(--radius);padding:clamp(1.5rem,3vw,2.25rem)}
+.growth-card .en{color:#9FB4F5;font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.growth-card h3{color:#fff;font-size:1.4rem;margin:.3rem 0 .6rem}
+.growth-card .price{color:#fff;margin-top:.6rem}
+.growth-card .price .from{color:#A7ADB6}
+.growth-card .incl{grid-template-columns:1fr}
+.growth-card .incl li{color:#E5E7EB;border-color:#2A3038}
+.growth-card .incl li::before{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='8' fill='%239FB4F5'/%3E%3Cpath d='M4.5 8.2l2.3 2.3 4.7-4.8' fill='none' stroke='%23fff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+.growth-card .incl-title{color:#A7ADB6}
+.growth-card .price-note{color:#A7ADB6}
+
+/* ---------- 10 なぜこの価格でつくれるのか ---------- */
+.why-grid{display:grid;gap:1.25rem}
+@media (min-width:901px){.why-grid{grid-template-columns:1fr 1fr;gap:1.5rem;align-items:stretch}}
+.way{border:1px solid var(--line);border-radius:var(--radius);padding:clamp(1.4rem,2.5vw,2rem);background:#fff;display:grid;grid-template-rows:auto 1fr auto;gap:1.25rem}
+.way.acc{border-color:var(--accent-line);background:var(--accent-tint)}
+.way-title{display:flex;align-items:baseline;gap:.7rem}
+.way-title .en{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.way.acc .way-title .en{color:var(--accent)}
+.way-title h3{font-size:1.2rem}
+.chainv{display:grid;gap:.35rem;align-content:start}
+.chainv li{position:relative;display:flex;align-items:center;gap:.7rem;padding:.55rem .85rem;border:1px solid var(--line);border-radius:9px;background:#fff;font-size:.9rem;color:var(--ink);font-weight:500}
+.chainv li .k{font-family:var(--font-en);font-size:.72rem;color:var(--muted);width:1.4rem}
+.chainv li .who{margin-left:auto;font-size:.72rem;color:var(--muted);background:var(--bg-alt);padding:.1rem .5rem;border-radius:999px}
+.chainv li:not(:last-child)::after{content:"";position:absolute;left:1.5rem;bottom:-.42rem;width:.45rem;height:.45rem;border-right:1.5px solid var(--line-strong);border-bottom:1.5px solid var(--line-strong);transform:rotate(45deg)}
+.stack{display:grid;gap:.5rem;align-content:start}
+.stack .blk{border-radius:12px;padding:1rem 1.1rem;background:#fff;border:1px solid var(--accent-line)}
+.stack .blk b{display:block;color:var(--ink);font-size:1rem}
+.stack .blk span{display:block;font-size:.82rem;color:var(--muted);margin-top:.15rem;line-height:1.6}
+.stack .blk.human{background:var(--ink);border-color:var(--ink)}
+.stack .blk.human b{color:#fff}
+.stack .blk.human span{color:#A7ADB6}
+.stack .plus{text-align:center;font-family:var(--font-en);color:var(--accent);font-weight:600;line-height:1}
+.way-cap{font-size:.9rem;color:var(--text)}
+.way-cap b{color:var(--ink)}
+.statement{margin-top:clamp(3rem,6vw,4.5rem);display:grid;gap:1.5rem;align-items:end}
+@media (min-width:901px){.statement{grid-template-columns:1.1fr .9fr;gap:3rem}}
+.statement h3{font-size:clamp(1.5rem,1rem + 1.7vw,2.2rem);letter-spacing:-.02em;line-height:1.4}
+.statement h3 em{font-style:normal;color:var(--accent)}
+.statement p{font-size:.98rem}
+.alloc{display:grid;gap:.6rem;margin-top:clamp(2.5rem,5vw,3.5rem);align-items:stretch}
+@media (min-width:901px){.alloc{grid-template-columns:1fr auto 1fr auto 1.3fr}}
+.alloc .anode{border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.25rem;background:#fff}
+.alloc .anode .en{display:block;font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem}
+.alloc .anode b{display:block;font-size:1rem;color:var(--ink)}
+.alloc .anode span{display:block;font-size:.85rem;color:var(--muted);margin-top:.2rem;line-height:1.6}
+.alloc .anode.acc{border-color:var(--accent);background:var(--accent-tint)}
+.alloc .anode.acc .en{color:var(--accent)}
+.alloc .arrow{color:var(--line-strong);text-align:center;font-size:1.2rem;line-height:1;align-self:center}
+.alloc .arrow::before{content:"↓"}
+@media (min-width:901px){.alloc .arrow::before{content:"→"}}
+
+/* ---------- 11 料金プラン ---------- */
+.pricing-lead{max-width:46rem}
+.pricing-lead .hl{display:block;margin-top:1.4rem;padding:1.1rem 1.3rem;border-left:3px solid var(--accent);background:#fff;border-radius:0 12px 12px 0;font-weight:700;color:var(--ink);font-size:1.05rem;line-height:1.7}
+.plans{display:grid;gap:1.25rem;margin-top:clamp(2rem,4vw,3rem);align-items:stretch}
+@media (min-width:901px){.plans{grid-template-columns:repeat(3,1fr);gap:1.25rem}}
+.plan{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:clamp(1.4rem,2.5vw,1.9rem);display:grid;grid-template-rows:auto auto auto auto 1fr auto;gap:1rem}
+.plan.rec{border-color:var(--ink);box-shadow:var(--shadow)}
+@media (min-width:901px){.plan.rec{transform:translateY(-.75rem)}}
+.ribbon{position:absolute;top:-.8rem;left:1.5rem;font-family:var(--font-en);font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#fff;padding:.3rem .75rem;border-radius:999px}
+.plan-name{font-family:var(--font-en);font-weight:700;font-size:1.15rem;letter-spacing:.02em;color:var(--ink)}
+.plan-price{display:flex;align-items:baseline;gap:.15rem;color:var(--ink);flex-wrap:wrap}
+.plan-price .num{font-family:var(--font-en);font-weight:700;font-size:clamp(2rem,1.6rem + 1vw,2.5rem);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.plan-price .unit{font-weight:700;font-size:1rem}
+.plan-price .from{color:var(--muted);font-weight:500;font-size:.95rem;margin-left:.15rem}
+.plan-desc{font-size:.9rem;color:var(--text)}
+.plan-desc b{color:var(--ink)}
+.plan-meta{display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--muted);background:var(--bg-alt);border-radius:999px;padding:.3rem .8rem;justify-self:start}
+.plan-meta b{color:var(--ink);font-weight:600}
+.plan-incl{display:grid;gap:.2rem;align-content:start}
+.plan-incl .base{font-size:.78rem;color:var(--accent);font-weight:600;padding:.2rem 0 .4rem;display:flex;align-items:center;gap:.4rem}
+.plan-incl .base::before{content:"+";font-family:var(--font-en);font-weight:700}
+.plan-incl li{display:flex;gap:.55rem;align-items:flex-start;font-size:.88rem;color:var(--ink);padding:.4rem 0;border-bottom:1px solid var(--line);line-height:1.6}
+.plan-incl li::before{content:"";width:.85rem;height:.85rem;flex:none;margin-top:.4rem;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='8' fill='%231F4FD0'/%3E%3Cpath d='M4.5 8.2l2.3 2.3 4.7-4.8' fill='none' stroke='%23fff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+.plan .btn{width:100%}
+.plans-note{margin-top:1.25rem}
+.cta-two{display:flex;flex-wrap:wrap;gap:.9rem 1rem;align-items:center;margin-top:clamp(2rem,4vw,3rem)}
+.cta-two .sep{font-size:.85rem;color:var(--muted)}
+
+/* ---------- 12 継続運用 / 13 月額型 ---------- */
+.growth-card .incl-note{font-size:.8rem;color:#A7ADB6;margin-top:1rem}
+.sub-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:clamp(1.5rem,3vw,2.5rem);display:grid;gap:2rem}
+@media (min-width:901px){.sub-card{grid-template-columns:1.1fr 1fr;gap:3rem;align-items:start}}
+.sub-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:1.25rem}
+.sub-stat{border:1px solid var(--line);border-radius:12px;padding:.9rem .9rem .8rem}
+.sub-stat small{display:block;font-size:.75rem;color:var(--muted);margin-bottom:.3rem}
+.sub-stat b{display:flex;align-items:baseline;gap:.1rem;font-family:var(--font-en);font-size:clamp(1.2rem,.9rem + .9vw,1.75rem);line-height:1.1;color:var(--ink);letter-spacing:-.02em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.sub-stat b i{font-style:normal;font-family:var(--font-jp);font-size:.55em;color:var(--ink);font-weight:700}
+.sub-stat b em{font-style:normal;font-size:.55em;color:var(--muted);font-weight:500;font-family:var(--font-jp)}
+.sub-stat.acc{border-color:var(--accent-line);background:var(--accent-tint)}
+.sub-stat.acc b{color:var(--accent)}
+.sub-msg{font-size:clamp(1.3rem,1rem + 1vw,1.7rem);letter-spacing:-.015em;line-height:1.45}
+.sub-msg em{font-style:normal;color:var(--accent)}
+.sub-note{font-size:.82rem;color:var(--muted);margin-top:1rem}
+.faq-mini{margin-top:clamp(3rem,6vw,4.5rem);display:grid;gap:1.25rem}
+@media (min-width:901px){.faq-mini{grid-template-columns:1fr 1fr;gap:1.5rem 3rem}}
+.faq-mini .item{border-top:1px solid var(--line);padding-top:1.1rem}
+.faq-mini h3{font-size:1rem;display:grid;grid-template-columns:1.4rem 1fr;gap:.5rem;margin-bottom:.5rem}
+.faq-mini h3 .q{font-family:var(--font-en);color:var(--accent);font-weight:700}
+.faq-mini p{font-size:.92rem;padding-left:1.9rem}
+.faq-mini p+p{margin-top:.4rem}
+.closing{margin-top:clamp(3.5rem,7vw,5.5rem);border-top:1px solid var(--line);padding-top:clamp(2.5rem,5vw,4rem);display:grid;gap:1.5rem}
+@media (min-width:901px){.closing{grid-template-columns:1fr 1fr;gap:3rem;align-items:center}}
+.closing h3{font-size:clamp(1.7rem,1rem + 2.2vw,2.6rem);letter-spacing:-.02em;line-height:1.3}
+.closing p b{color:var(--ink)}
+
+/* ---------- 14 FAQ ---------- */
+.faq-list{max-width:52rem;border-top:1px solid var(--line)}
+.faq-list details{border-bottom:1px solid var(--line)}
+.faq-list summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:2rem 1fr 2rem;gap:.8rem;align-items:start;padding:1.25rem 0;font-weight:700;color:var(--ink);line-height:1.6}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary .q{font-family:var(--font-en);font-weight:700;color:var(--accent);line-height:1.6}
+.faq-list summary .chev{position:relative;width:2rem;height:2rem;border-radius:50%;border:1px solid var(--line-strong);justify-self:end}
+.faq-list summary .chev::before,.faq-list summary .chev::after{content:"";position:absolute;left:50%;top:50%;width:.8rem;height:1.5px;background:var(--ink);transform:translate(-50%,-50%);transition:transform .25s}
+.faq-list summary .chev::after{transform:translate(-50%,-50%) rotate(90deg)}
+.faq-list details[open] summary .chev::after{transform:translate(-50%,-50%) rotate(0)}
+.faq-list .a{padding:0 2.8rem 1.4rem 2.8rem;font-size:.97rem}
+@media (max-width:560px){.faq-list .a{padding-right:0}}
+
+/* ---------- 15 FINAL CTA ---------- */
+.final{background:var(--bg-deep);color:#C9CDD3}
+.final .eyebrow{color:#9FB4F5}.final .eyebrow::before{background:#9FB4F5}
+.final-grid{display:grid;gap:2.5rem}
+@media (min-width:901px){.final-grid{grid-template-columns:1fr 1.15fr;gap:4rem;align-items:start}}
+.final h2{color:#fff;font-size:clamp(1.8rem,1rem + 2.6vw,2.9rem);letter-spacing:-.025em;line-height:1.3}
+.final .lead{margin-top:1.3rem;color:#C9CDD3}
+.final .hint{margin-top:1.5rem;display:grid;gap:.5rem;font-size:.9rem;color:#A7ADB6}
+.final .hint li{display:flex;gap:.6rem;align-items:flex-start}
+.final .hint li::before{content:"";flex:none;width:.4rem;height:.4rem;border-radius:50%;background:#9FB4F5;margin-top:.7rem}
+.form-card{background:#fff;color:var(--text);border-radius:var(--radius);padding:clamp(1.4rem,3vw,2.25rem)}
+.form-card h3{font-size:1.15rem;margin-bottom:1.1rem}
+.form-preview{display:flex;gap:.7rem;align-items:flex-start;background:var(--bg-alt);border:1px solid var(--line);border-radius:var(--radius-sm);padding:.8rem .95rem;font-size:.85rem;color:var(--ink);margin-bottom:1.3rem}
+.form-preview svg{flex:none;width:1.1rem;height:1.1rem;color:var(--muted);margin-top:.3rem}
+.field{display:grid;gap:.4rem;margin-bottom:1.05rem}
+.field label{font-weight:600;color:var(--ink);font-size:.92rem;display:flex;align-items:center;gap:.5rem}
+.req,.opt{font-size:.68rem;font-weight:700;padding:.08rem .5rem;border-radius:999px}
+.req{color:var(--accent);background:var(--accent-tint)}
+.opt{color:var(--muted);background:var(--bg-alt)}
+.field input,.field select,.field textarea{width:100%;font:inherit;color:var(--ink);background:#fff;border:1px solid var(--line-strong);border-radius:10px;padding:.8rem .95rem;line-height:1.5;transition:border-color .2s,box-shadow .2s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-tint)}
+.field textarea{min-height:6.5rem;resize:vertical}
+.field select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23111418' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-position:calc(100% - 16px) 50%;background-repeat:no-repeat;padding-right:2.6rem}
+.field .help{font-size:.8rem;color:var(--muted)}
+.two{display:grid;gap:0 1rem}
+@media (min-width:560px){.two{grid-template-columns:1fr 1fr}}
+.check{display:flex;gap:.7rem;align-items:flex-start;font-size:.9rem;margin:.2rem 0 1.3rem}
+.check input{width:1.1rem;height:1.1rem;margin:.35rem 0 0;accent-color:var(--accent);flex:none}
+.unset{display:inline-block;font-size:.68rem;font-weight:700;color:var(--muted);background:var(--bg-alt);padding:.05rem .5rem;border-radius:999px;vertical-align:middle;margin-left:.3rem}
+.form-actions{display:grid;gap:.8rem}
+.form-actions .btn{width:100%;padding:1.05rem}
+.form-status{border-radius:var(--radius-sm);padding:.85rem 1rem;font-size:.9rem;background:var(--accent-tint);color:var(--ink);border:1px solid var(--accent-line)}
+.form-status:focus{outline:3px solid var(--accent-line);outline-offset:2px}
+
+/* ---------- フッター ---------- */
+.site-footer{background:#fff;border-top:1px solid var(--line);padding-block:3rem 2rem}
+.footer-grid{display:grid;gap:2rem}
+@media (min-width:768px){.footer-grid{grid-template-columns:1.2fr 1fr 1fr}}
+.footer-brand p{font-size:.88rem;color:var(--muted);margin-top:.7rem;max-width:22rem}
+.footer-col h4{font-size:.78rem;letter-spacing:.1em;color:var(--muted);font-weight:600;margin-bottom:.8rem;text-transform:uppercase;font-family:var(--font-en)}
+.footer-col li{font-size:.9rem;color:var(--text);padding:.28rem 0;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.footer-col li a{color:var(--ink);text-decoration:none}
+.footer-col li a:hover{text-decoration:underline;text-underline-offset:.25em}
+.footer-col li code{font-family:var(--font-en);font-size:.75rem;color:var(--muted)}
+.soon{font-size:.66rem;font-weight:700;color:var(--muted);background:var(--bg-alt);padding:.05rem .45rem;border-radius:999px}
+.copyright{margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;justify-content:space-between}
+
+/* ---------- スマホ追従CTA ---------- */
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:90;padding:.6rem 1rem calc(.6rem + env(safe-area-inset-bottom,0px));background:rgba(255,255,255,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);transition:transform .3s ease}
+.sticky-cta .btn{width:100%;padding:.95rem}
+.sticky-cta.is-hidden{transform:translateY(110%)}
+@media (max-width:900px){main{padding-bottom:5rem}}
+@media (min-width:901px){.sticky-cta{display:none}}
+
+
+/* ---------- 08 セルフ診断（ヒアリング）パネル ---------- */
+.check-head{align-items:start}
+@media (min-width:901px){.check-head{grid-template-columns:1fr 1.1fr;gap:3rem}}
+.dash-label{font-size:.8rem;font-weight:700;color:var(--muted);letter-spacing:.06em;margin:clamp(2.5rem,5vw,3.5rem) 0 .8rem}
+
+/* ---------- 14 ナレッジ ---------- */
+.klist{display:grid;gap:.75rem}
+@media (min-width:768px){.klist{grid-template-columns:repeat(3,1fr);gap:1rem}}
+.klist a{display:flex;flex-direction:column;gap:.45rem;height:100%;background:#fff;border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.2rem;text-decoration:none;color:var(--text);transition:border-color .2s,transform .2s}
+.klist a:hover{border-color:var(--ink);transform:translateY(-2px)}
+.klist .k-q{font-weight:700;color:var(--ink);font-size:1rem;display:flex;gap:.5rem;align-items:baseline}
+.klist .k-q::before{content:"Q";font-family:var(--font-en);font-weight:700;color:var(--accent);font-size:.8rem}
+.klist .k-a{font-size:.85rem;color:var(--muted);line-height:1.65}
+/* ---------- フッター：サービス定義 ---------- */
+.footer-def{border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem clamp(1.25rem,3vw,2rem);margin-bottom:2.5rem;background:var(--bg-alt)}
+.footer-def h4{font-size:.95rem;color:var(--ink);margin-bottom:.9rem}
+.footer-def dl{display:grid;gap:.6rem;margin:0}
+.footer-def dl div{display:grid;grid-template-columns:1fr;gap:.15rem}
+@media (min-width:768px){.footer-def dl div{grid-template-columns:14rem 1fr;gap:1rem}}
+.footer-def dt{font-size:.8rem;font-weight:700;color:var(--muted)}
+.footer-def dd{margin:0;font-size:.9rem;color:var(--text)}
+@media (min-width:768px){.footer-grid{grid-template-columns:1.2fr 1fr 1fr 1fr}}
+
+/* ---------- 控えめなフェード ---------- */
+@media (prefers-reduced-motion:no-preference){
+  .reveal.is-in{animation:fadeUp .7s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+
+<!-- ===================================================================== ヘッダー -->
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top" aria-label="AI Ready Web トップ"><i aria-hidden="true"></i>AI Ready Web</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" id="menu-btn"><span class="menu-icon" aria-hidden="true"><span></span></span><span>メニュー</span></button>
+    <nav class="site-nav" id="site-nav" aria-label="サイトメニュー">
+      <ul>
+        <li><a href="#service">サービス</a></li>
+        <li><a href="#pricing">料金</a></li>
+        <li><a href="#check">無料診断</a></li>
+        <li><a href="knowledge/">ナレッジ</a></li>
+        <li><a href="research/">Research</a></li>
+      </ul>
+      <a class="btn btn-primary btn-sm" href="#check" data-topic="check">無料で診断する</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ===================================================================== 01 FIRST VIEW -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="jp">AI時代の検索行動に対応した<wbr>Webサイト制作</span></p>
+      <h1 id="hero-title">あなたの会社、<br>ChatGPTに聞いたら<wbr>出てきますか？</h1>
+      <p class="hero-sub">Googleで<wbr>探されるだけの<wbr>ホームページから、<br class="br-pc">AIにも<wbr>見つけてもらえる<wbr>ホームページへ。</p>
+      <p class="hero-lead"><span class="nw">AI Ready Web</span>は、<wbr>人にも、<wbr>検索エンジンにも、<wbr>AIにも<wbr>理解されやすい<wbr>Webサイトを<wbr>つくる<wbr>制作サービスです。</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary btn-lg" href="#check" data-topic="check">自社のAI検索状況を無料で診断する</a>
+        <a class="btn btn-ghost" href="#service">AI Ready Webについて見る</a>
+      </div>
+      <p class="cta-note">サイト上の<wbr>セルフ診断（3分）から<wbr>始められます。</p>
+    </div>
+
+    <!-- ビジュアル：AIに質問 → Webの情報を読む → 候補を整理 → 情報が整理された会社が候補に -->
+    <div class="hero-visual">
+      <div class="ai-panel" id="ai-panel" role="img" aria-label="イメージ：利用者がAIに「世田谷区で自然素材の家に強い工務店を教えて」と質問し、AIがWeb上の各社の情報を読み取って候補を整理する。会社の情報が整理されているC工務店が第一候補として紹介されている。">
+        <div class="ai-head" aria-hidden="true"><i></i>AIアシスタント<span class="tag">イメージ</span></div>
+        <div class="ai-body" aria-hidden="true">
+          <div class="msg user st1">世田谷区で、自然素材の家に強い工務店を教えて</div>
+          <div class="msg ai st2">
+            <div class="scan-label"><i></i>Web上の情報を確認しています</div>
+            <div class="sites"><span class="site">A工務店のサイト</span><span class="site">B工務店のサイト</span><span class="site ready">C工務店のサイト</span><span class="site">D工務店のサイト</span></div>
+          </div>
+          <div class="msg ai st3">
+            条件に合いそうな候補を整理しました。
+            <ol class="cands">
+              <li class="ready"><span class="n">1</span><div><b>C工務店</b><span>自然素材の住宅を専門に、世田谷区・目黒区で施工。事例とFAQが公開されている。</span><em>AI READY</em></div></li>
+              <li><span class="n">2</span><div><b>A工務店</b><span>施工実績はあるが、対応地域の記載が見つからない。</span></div></li>
+              <li><span class="n">3</span><div><b>B工務店</b><span>自然素材への対応が明記されていない。</span></div></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <p class="hero-caption">※ AIの回答例はイメージです。<wbr>特定のAIサービスでの<wbr>表示を<wbr>保証するものではありません。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== 02 検索行動の変化 -->
+<section class="section section-alt" id="shift" aria-labelledby="shift-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">02<span class="jp">検索行動の変化</span></p>
+      <h2 id="shift-title">ホームページの<wbr>探され方が、<wbr>変わり始めています。</h2>
+      <p class="lead">これまで<wbr>お客様は、<wbr>Googleで<wbr>検索し、<wbr>いくつかの<wbr>Webサイトを<wbr>見比べて<wbr>会社を<wbr>選んできました。<wbr>これからは<wbr>「おすすめの会社を教えて」と<wbr>AIに<wbr>相談し、<wbr>AIが<wbr>整理した<wbr>候補から<wbr>会社を<wbr>知る行動が<wbr>増えていきます。</p>
+    </div>
+    <div class="lanes reveal">
+      <div class="lane">
+        <div class="lane-title">Before<span class="jp">これまで</span></div>
+        <ol class="flow">
+          <li><span class="k">01</span>Google</li>
+          <li><span class="k">02</span>検索する</li>
+          <li><span class="k">03</span>Webサイトを<wbr>比較する</li>
+          <li><span class="k">04</span>会社を選ぶ</li>
+        </ol>
+      </div>
+      <div class="lane now">
+        <div class="lane-title">From now<span class="jp">これから</span></div>
+        <ol class="flow">
+          <li><span class="k">01</span>ChatGPTなどの<wbr>AI</li>
+          <li><span class="k">02</span>条件を相談する</li>
+          <li class="hl"><span class="k">03</span>AIが候補を<wbr>整理する</li>
+          <li><span class="k">04</span>会社を知る</li>
+        </ol>
+      </div>
+    </div>
+    <p class="note lanes-note reveal">どちらか一方に<wbr>置き換わる<wbr>わけではありません。<wbr>Googleと<wbr>AI、<wbr>両方の入口から<wbr>見つけてもらえる<wbr>状態を<wbr>つくることが<wbr>大切になります。</p>
+  </div>
+</section>
+
+<!-- ===================================================================== 03 問題提起 -->
+<section class="section" id="problem" aria-labelledby="problem-title">
+  <div class="wrap problem-grid">
+    <div class="problem-copy reveal">
+      <p class="eyebrow">03<span class="jp">問題提起</span></p>
+      <h2 id="problem-title">いい会社なのに、<br>AIが知らなければ<wbr>候補にならない。</h2>
+      <p>優れた商品や<wbr>サービスが<wbr>あっても、<wbr>Web上の情報が<wbr>足りない、<wbr>散らばっている、<wbr>あいまいなままだと、<wbr>AIは<wbr>会社や<wbr>サービスを<wbr>十分に<wbr>理解できないことが<wbr>あります。</p>
+      <p>だからこそ、<wbr>会社の情報を<wbr>「AIにも<wbr>理解しやすい状態」に<wbr>整理しておく<wbr>必要があります。</p>
+    </div>
+    <div class="states reveal" role="img" aria-label="比較図：情報が散らばっている状態と、整理された状態。">
+      <div class="state">
+        <div class="state-title">情報が散らばっている状態</div>
+        <div class="scatter" aria-hidden="true">
+          <span>事業内容があいまい</span><span>対応地域の記載なし</span><span>強みが抽象的</span><span>事例が古い</span><span>FAQがない</span><span>サービスが一覧できない</span>
+        </div>
+      </div>
+      <div class="state good">
+        <div class="state-title">整理された状態</div>
+        <ul class="ordered" aria-hidden="true">
+          <li>何をしている会社か</li>
+          <li>誰のためのサービスか</li>
+          <li>どんな課題を<wbr>解決できるか</li>
+          <li>どんな特徴・<wbr>強みがあるか</li>
+          <li>どの地域・領域に<wbr>対応しているか</li>
+          <li>なぜこの会社を<wbr>選ぶ理由があるか</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== 04 CONCEPT -->
+<section class="section concept" id="concept" aria-labelledby="concept-title">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">04<span class="jp">Concept</span></p>
+      <h2 id="concept-title">これからの<wbr>ホームページは、<br>人だけが<wbr>読むものではない。</h2>
+      <p class="lead">同じ<wbr>1つの<wbr>Webサイトを、<wbr>人が読み、<wbr>Googleが評価し、<wbr>AIが<wbr>読み取って<wbr>答えに使う。<wbr><span class="nw">AI Ready Web</span>は、<wbr>3つの読み手を<wbr>前提に<wbr>情報を<wbr>設計します。</p>
+    </div>
+    <div class="readers reveal">
+      <div class="site-card" role="img" aria-label="Webサイトの情報資産：事業内容、対象顧客、対応地域、特徴・強み、事例、FAQ">
+        <div class="sc-head"><b>御社のWebサイト</b><small>会社の情報資産</small></div>
+        <ul aria-hidden="true">
+          <li>事業内容</li><li>対象顧客</li><li>対応地域</li><li>特徴・強み</li><li>事例</li><li>FAQ</li>
+        </ul>
+      </div>
+      <div class="connect" aria-hidden="true"><i></i><i></i><i></i></div>
+      <ul class="reader-list">
+        <li class="reader">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12s3.5-6.5 9.5-6.5S21.5 12 21.5 12s-3.5 6.5-9.5 6.5S2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></span>
+          <div><b>人</b><span>読んで、<wbr>比較して、<wbr>問い合わせるか<wbr>判断する。</span></div>
+        </li>
+        <li class="reader">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg></span>
+          <div><b>Google</b><span>ページを<wbr>評価し、<wbr>検索結果に<wbr>表示する。</span></div>
+        </li>
+        <li class="reader ai">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7a2.5 2.5 0 0 1-2.5 2.5H10l-4.5 3.5V16A2 2 0 0 1 4 14z"/><path d="M8 9h8M8 12.5h5"/></svg></span>
+          <div><b>AI</b><span>情報を<wbr>読み取り、<wbr>質問への<wbr>答えとして<wbr>会社を<wbr>紹介する。</span></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== 05 AI READY WEBとは -->
+<section class="section" id="service" aria-labelledby="service-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">05<span class="jp">AI Ready Webとは</span></p>
+      <h2 id="service-title">人にも、<wbr>Googleにも、<wbr>AIにも<wbr>伝わるWebサイト。</h2>
+      <p class="lead"><span class="nw">AI Ready Web</span>は、<wbr>デザインを<wbr>新しくするだけの<wbr>サービスでは<wbr>ありません。<wbr>Web制作に<wbr>SEOと<wbr>AI検索設計を<wbr>組み合わせ、<wbr>会社の情報を<wbr>「正しく伝わる<wbr>情報資産」として<wbr>整えます。</p>
+    </div>
+    <div class="times reveal" aria-hidden="true"><b>Web制作</b><span>×</span><b>SEO</b><span>×</span><b>AI検索設計</b></div>
+    <div class="pillars reveal">
+      <div class="pillar">
+        <span class="en">Web Design &amp; Build</span>
+        <h3>Web制作</h3>
+        <p>会社の<wbr>魅力が<wbr>伝わり、<wbr>問い合わせに<wbr>つながる<wbr>Webサイトを<wbr>企画・<wbr>設計・<wbr>制作します。</p>
+      </div>
+      <div class="pillar">
+        <span class="en">SEO</span>
+        <h3>SEO</h3>
+        <p>検索エンジンに<wbr>正しく<wbr>評価されるための<wbr>基本設計。<wbr>AI時代でも<wbr>土台として<wbr>必要です。</p>
+      </div>
+      <div class="pillar acc">
+        <span class="en">AI Search Design</span>
+        <h3>AI検索設計</h3>
+        <p>AIが<wbr>お客様に<wbr>会社を<wbr>紹介するとき、<wbr>候補として<wbr>見つけてもらいやすい<wbr>情報環境を<wbr>つくります。</p>
+      </div>
+    </div>
+    <p class="note reveal" style="margin-top:1.5rem">※ AI検索設計は、<wbr>一般に「AI検索対策（GEO / AEOなどと呼ばれる領域）」と<wbr>されるものを、<wbr>経営者の方にも<wbr>分かる形で<wbr>進めるものです。<wbr>特定のAIサービスでの<wbr>掲載や順位を<wbr>保証するものでは<wbr>ありません。</p>
+
+    <div class="chain reveal" role="img" aria-label="情報の流れ：会社 → Webサイト → Google・ChatGPT・その他のAI → お客様">
+      <div class="node">会社<small>事業・強み・対応地域</small></div>
+      <div class="arrow" aria-hidden="true"></div>
+      <div class="node">Webサイト<small>整理された情報資産</small></div>
+      <div class="arrow" aria-hidden="true"></div>
+      <div class="node multi" aria-hidden="true"><span>Google</span><span class="acc">ChatGPT</span><span class="acc">その他のAI</span></div>
+      <div class="arrow" aria-hidden="true"></div>
+      <div class="node">お客様<small>探す・相談する・選ぶ</small></div>
+    </div>
+
+    <!-- サービス構造：知る → つくる → 育てる -->
+    <ol class="steps3 reveal">
+      <li class="step3">
+        <span class="en">Step 01</span><span class="verb">知る</span>
+        <h3>AI検索診断</h3>
+        <p>現在、<wbr>AI上で<wbr>自社が<wbr>どのように<wbr>発見・<wbr>参照されているかを<wbr>調査します。</p>
+      </li>
+      <li class="step3 acc">
+        <span class="en">Step 02</span><span class="verb">つくる</span>
+        <h3>AI Ready Web</h3>
+        <p>SEOと<wbr>AI検索の<wbr>双方を<wbr>考慮した<wbr>Webサイトを<wbr>企画・<wbr>設計・<wbr>制作します。</p>
+      </li>
+      <li class="step3">
+        <span class="en">Step 03</span><span class="verb">育てる</span>
+        <h3>AI Search Growth</h3>
+        <p>公開後も<wbr>AI検索上での<wbr>登場状況、<wbr>引用状況、<wbr>競合状況などを<wbr>観測し、<wbr>継続的に<wbr>改善します。</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===================================================================== 06 4つの特徴 -->
+<section class="section section-alt" id="features" aria-labelledby="features-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">06<span class="jp">4つの特徴</span></p>
+      <h2 id="features-title">AIには<wbr>理解しやすく、<wbr>人には<wbr>選びやすく。</h2>
+    </div>
+    <ol class="features">
+      <li class="feature reveal">
+        <span class="num" aria-hidden="true">01</span>
+        <div>
+          <h3>AIに理解される<wbr>情報設計</h3>
+          <p>会社、<wbr>サービス、<wbr>対象顧客、<wbr>対応地域、<wbr>特徴、<wbr>専門性を<wbr>明確に<wbr>整理します。<wbr>抽象的な<wbr>コピーだけでなく、<wbr>企業の価値を<wbr>「情報」として<wbr>設計します。</p>
+        </div>
+      </li>
+      <li class="feature reveal">
+        <span class="num" aria-hidden="true">02</span>
+        <div>
+          <h3>AI上で想定される<wbr>質問に答える<wbr>コンテンツ設計</h3>
+          <p>お客様が<wbr>AIに<wbr>聞きそうな<wbr>質問を<wbr>想定し、<wbr>サービスページ、<wbr>FAQ、<wbr>事例、<wbr>専門コンテンツを<wbr>設計します。</p>
+          <div class="q" aria-hidden="true"><span>○○に強い会社は？</span><span>○○するならどこがおすすめ？</span><span>この条件で相談できる会社は？</span></div>
+        </div>
+      </li>
+      <li class="feature reveal">
+        <span class="num" aria-hidden="true">03</span>
+        <div>
+          <h3>SEO・クローラー・<wbr>構造化などの<wbr>技術設計</h3>
+          <p>SEOの<wbr>基本設計に加え、<wbr>HTML構造、<wbr>サイトマップ、<wbr>構造化データ、<wbr>robots.txtなどの<wbr>技術設定を<wbr>整え、<wbr>検索エンジンと<wbr>AIが<wbr>アクセス・<wbr>解釈しやすい<wbr>状態にします。</p>
+        </div>
+      </li>
+      <li class="feature reveal">
+        <span class="num" aria-hidden="true">04</span>
+        <div>
+          <h3>問い合わせにつながる<wbr>UX/UI設計</h3>
+          <p>最終的に<wbr>問い合わせや<wbr>購入を<wbr>判断するのは<wbr>人です。<wbr>読みやすく、<wbr>比較しやすく、<wbr>迷わず<wbr>問い合わせできる<wbr>導線を<wbr>設計します。</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===================================================================== 07 従来のWeb制作との違い -->
+<section class="section" id="compare" aria-labelledby="compare-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">07<span class="jp">従来のWeb制作との違い</span></p>
+      <h2 id="compare-title">従来のWeb制作に、<wbr>AI検索という<wbr>視点を加えたもの。</h2>
+      <p class="lead">従来のWeb制作が<wbr>不十分という<wbr>意味ではありません。<wbr>これまで<wbr>大切にされてきた<wbr>要素はそのままに、<wbr>AIから<wbr>見つけてもらうための<wbr>設計を<wbr>加えています。</p>
+    </div>
+    <div class="table-wrap reveal">
+      <table class="compare">
+        <caption>比較項目ごとの対応範囲（一般的な傾向を整理したものです）</caption>
+        <thead>
+          <tr><th scope="col">項目</th><th scope="col">従来のWeb制作</th><th scope="col" class="acc">AI Ready Web</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">デザイン</th><td><span class="mark full" role="img" style="background:var(--ink)" aria-label="対応">●</span></td><td class="acc"><span class="mark full" role="img" aria-label="対応">●</span></td></tr>
+          <tr><th scope="row">スマートフォン対応</th><td><span class="mark full" role="img" style="background:var(--ink)" aria-label="対応">●</span></td><td class="acc"><span class="mark full" role="img" aria-label="対応">●</span></td></tr>
+          <tr><th scope="row">SEO</th><td><span class="mark part" role="img" aria-label="基本的な対応">◯</span><small>基本設定が中心</small></td><td class="acc"><span class="mark full" role="img" aria-label="対応">●</span><small>基本設計＋AI検索を考慮</small></td></tr>
+          <tr><th scope="row">企業情報設計</th><td><span class="mark dep" role="img" aria-label="制作会社により異なる">△</span></td><td class="acc"><span class="mark full" role="img" aria-label="対応">●</span></td></tr>
+          <tr><th scope="row">AI検索を想定したコンテンツ</th><td><span class="mark none" role="img" aria-label="通常は含まれない">—</span></td><td class="acc"><span class="mark full" role="img" aria-label="対応">●</span></td></tr>
+          <tr><th scope="row">FAQ設計</th><td><span class="mark dep" role="img" aria-label="制作会社により異なる">△</span></td><td class="acc"><span class="mark full" role="img" aria-label="対応">●</span></td></tr>
+          <tr><th scope="row">構造化データ</th><td><span class="mark dep" role="img" aria-label="制作会社により異なる">△</span></td><td class="acc"><span class="mark full" role="img" aria-label="対応">●</span></td></tr>
+          <tr><th scope="row">AIクローラーへの配慮</th><td><span class="mark none" role="img" aria-label="通常は含まれない">—</span></td><td class="acc"><span class="mark full" role="img" aria-label="対応">●</span></td></tr>
+          <tr><th scope="row">公開後のAI検索モニタリング</th><td><span class="mark none" role="img" aria-label="通常は含まれない">—</span></td><td class="acc"><span class="mark full" role="img" aria-label="対応">●</span><small>AI Search Growth</small></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="legend reveal" aria-hidden="true">
+      <span><span class="mark full" style="width:1.1rem;height:1.1rem;font-size:.6rem">●</span>標準で対応</span>
+      <span><span class="mark part" style="width:1.1rem;height:1.1rem;font-size:.6rem">◯</span>基本的な対応</span>
+      <span><span class="mark dep">△</span>制作会社により異なる</span>
+      <span><span class="mark none">—</span>通常は含まれない</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== 08 無料AI検索診断 -->
+<section class="section section-alt" id="check" aria-labelledby="check-title">
+  <div class="wrap">
+    <div class="check-head">
+      <div class="reveal">
+        <p class="eyebrow">08<span class="jp">無料AI検索診断</span></p>
+        <h2 id="check-title" style="font-size:clamp(1.7rem,1rem + 2.2vw,2.6rem);letter-spacing:-.02em">あなたの会社は、<wbr>AIから<wbr>どう見えている？</h2>
+        <p class="lead" style="margin-top:1.2rem">まずは、<wbr>このページ上の<wbr>セルフ診断で、<wbr>御社について<wbr>「お客様がAIに<wbr>聞きそうな質問」と、<wbr>今のホームページの<wbr>整理状況を<wbr>確認できます。<wbr>所要時間は<wbr>3分ほど。<wbr>その内容を<wbr>もとに、<wbr>ChatGPTなどの<wbr>AI上で<wbr>実際に<wbr>どう見えているかを<wbr>調べる<wbr>無料AI検索診断（レポート）を<wbr>お申し込みいただけます。</p>
+        <ol class="insight" style="margin-top:1.5rem" aria-label="診断の流れ">
+          <li><span class="box">セルフ診断（3分）</span></li>
+          <li><span class="box">無料AI検索診断を申し込む</span></li>
+          <li><span class="box">レポートで改善点を知る</span></li>
+        </ol>
+      </div>
+
+      <!-- セルフ診断（ヒアリング）パネル -->
+      <div class="hearing reveal" id="hearing" role="region" aria-labelledby="hearing-title">
+        <div class="hearing-head">
+          <div class="hearing-title"><i aria-hidden="true"></i><span id="hearing-title">セルフ診断（約3分）</span></div>
+          <div class="hearing-progress" id="hearing-progress"></div>
+        </div>
+        <div class="hearing-body" id="hearing-body">
+          <div class="h-intro" id="h-intro">
+            <p class="h-lead">いくつかの質問に<wbr>答えていただくと、<wbr>御社について<wbr><b>お客様がAIに聞きそうな質問</b>と、<wbr><b>今のホームページの整理状況</b>を<wbr>その場で<wbr>確認できます。</p>
+            <ul class="h-ex" aria-label="質問の例">
+              <li>世田谷区でおすすめの工務店は？</li>
+              <li>自然素材の家に強い工務店を教えて</li>
+              <li>中小企業に強い税理士は？</li>
+            </ul>
+            <button class="btn btn-primary" type="button" id="h-start">セルフ診断を始める</button>
+            <p class="note">入力内容は、<wbr>最後に<wbr>「申し込む」を押すまで<wbr>送信されません。</p>
+          </div>
+          <ol class="h-log" id="h-log" aria-label="これまでの質問と回答"></ol>
+          <div class="h-current" id="h-current" aria-live="polite" hidden></div>
+          <div class="h-result" id="h-result" aria-live="polite" hidden></div>
+        </div>
+        <div class="hearing-foot" id="hearing-foot" hidden>
+          <button type="button" id="h-back">← ひとつ戻る</button>
+          <button type="button" id="h-restart">最初からやり直す</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="dash-label reveal">無料AI検索診断レポートのイメージ</p>
+    <!-- 診断イメージ（サンプルデータ） -->
+    <div class="dash reveal" role="img" aria-label="診断レポートのサンプル画面。AI登場率15%、対象質問20件、自社サイト引用1回。競合A社13回登場、競合B社9回登場、御社3回登場。改善ポイントとして企業情報・技術・コンテンツの3項目。表示している数値は架空のサンプルです。">
+      <div class="dash-head" aria-hidden="true">AI検索診断レポート<span class="sample">サンプルデータ（架空）</span></div>
+      <div class="dash-body" aria-hidden="true">
+        <div>
+          <div class="kpis">
+            <div class="kpi acc"><small>AI登場率</small><b>15<i>%</i></b><span>対象質問20件のうち<wbr>3件で登場</span></div>
+            <div class="kpi"><small>対象質問</small><b>20</b><span>見込み客が<wbr>聞きそうな質問</span></div>
+            <div class="kpi"><small>自社サイト引用</small><b>1</b><span>回答内で<wbr>参照された回数</span></div>
+          </div>
+          <p class="bars-title" style="margin-top:1.4rem">登場回数の比較（対象質問20件）</p>
+          <div class="bars">
+            <div class="bar"><span>競合A社</span><i style="--w:65%"></i><b>13回</b></div>
+            <div class="bar"><span>競合B社</span><i style="--w:45%"></i><b>9回</b></div>
+            <div class="bar you"><span>御社</span><i style="--w:15%"></i><b>3回</b></div>
+          </div>
+        </div>
+        <div>
+          <p class="find-title">なぜそう見えているか — 主な改善ポイント</p>
+          <div class="findings">
+            <div class="finding"><small>企業情報の整理</small><b>対応地域と対象顧客の記載が不足している</b></div>
+            <div class="finding"><small>技術的な設定</small><b>構造化データが未設定、サイトマップがない</b></div>
+            <div class="finding"><small>コンテンツ</small><b>想定される質問に答えるFAQ・事例ページがない</b></div>
+            <div class="finding"><small>引用状況</small><b>回答の参照元は主に業界ポータルサイト</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="dash-foot">※ 画面と数値はすべて診断画面のサンプルです。実際のレポートは調査結果にもとづいて作成します。</div>
+    </div>
+
+    <ol class="insight reveal" aria-label="レポートで分かること">
+      <li><span class="box">現在どう見えているか</span></li>
+      <li><span class="box">なぜそうなっているか</span></li>
+      <li><span class="box">何を改善すべきか</span></li>
+    </ol>
+    <div class="cta-row reveal">
+      <a class="btn btn-primary btn-lg" href="#check" data-topic="check">自社のAI検索状況を無料で診断する</a>
+      <a class="link" href="#contact">セルフ診断を省いて、<wbr>フォームから直接申し込む</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== 09 制作プロセス -->
+<section class="section" id="process" aria-labelledby="process-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">09<span class="jp">制作プロセス</span></p>
+      <h2 id="process-title">調査から<wbr>公開後まで、<wbr>一貫して<wbr>設計します。</h2>
+    </div>
+    <ol class="process reveal">
+      <li><span class="dot" aria-hidden="true">1</span><div><h3>ヒアリング</h3><p>事業・顧客・<wbr>強みを伺う</p></div></li>
+      <li class="acc"><span class="dot" aria-hidden="true">2</span><div><h3>AI検索・<wbr>競合調査</h3><p>現在の<wbr>見え方を<wbr>把握</p></div></li>
+      <li><span class="dot" aria-hidden="true">3</span><div><h3>戦略・<wbr>情報設計</h3><p>伝える<wbr>情報を<wbr>整理</p></div></li>
+      <li><span class="dot" aria-hidden="true">4</span><div><h3>コピー・<wbr>コンテンツ設計</h3><p>想定質問に<wbr>答える<wbr>内容</p></div></li>
+      <li><span class="dot" aria-hidden="true">5</span><div><h3>UI/UX<wbr>デザイン</h3><p>人が<wbr>選びやすい<wbr>画面</p></div></li>
+      <li><span class="dot" aria-hidden="true">6</span><div><h3>開発</h3><p>速く、<wbr>正しく<wbr>動く実装</p></div></li>
+      <li class="acc"><span class="dot" aria-hidden="true">7</span><div><h3>SEO・AI検索向け<wbr>技術設定</h3><p>構造化・<wbr>クローラー配慮</p></div></li>
+      <li><span class="dot" aria-hidden="true">8</span><div><h3>公開</h3><p>公開前<wbr>チェックを<wbr>経て</p></div></li>
+      <li class="acc"><span class="dot" aria-hidden="true">9</span><div><h3>継続<wbr>モニタリング</h3><p>AI検索上の<wbr>状況を<wbr>観測</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===================================================================== 10 なぜ、この価格でつくれるのか -->
+<section class="section" id="why" aria-labelledby="why-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">10<span class="jp">料金の考え方</span></p>
+      <h2 id="why-title">なぜ、<wbr>この価格で<wbr>つくれるのか。</h2>
+      <p class="lead">安くつくることが<wbr>目的ではありません。<wbr>AIに任せられる<wbr>作業と、<wbr>人が担うべき<wbr>判断を<wbr>分けることで、<wbr>制作工程を<wbr>合理化しています。</p>
+    </div>
+    <div class="why-grid">
+      <div class="way reveal">
+        <div class="way-title"><span class="en">Conventional</span><h3>従来のWeb制作</h3></div>
+        <ol class="chainv" aria-label="従来のWeb制作の工程">
+          <li><span class="k">01</span>企画<span class="who">人</span></li>
+          <li><span class="k">02</span>構成<span class="who">人</span></li>
+          <li><span class="k">03</span>ライティング<span class="who">人</span></li>
+          <li><span class="k">04</span>デザイン<span class="who">人</span></li>
+          <li><span class="k">05</span>コーディング<span class="who">人</span></li>
+          <li><span class="k">06</span>チェック<span class="who">人</span></li>
+          <li><span class="k">07</span>納品<span class="who">人</span></li>
+        </ol>
+        <p class="way-cap">各工程を<wbr>人が<wbr>ゼロから<wbr>制作するため、<wbr><b>制作工数そのものが<wbr>価格に<wbr>大きく反映される。</b></p>
+      </div>
+      <div class="way acc reveal">
+        <div class="way-title"><span class="en">AI Ready Web</span><h3>AI Ready Web</h3></div>
+        <div class="stack" role="img" aria-label="AI ＋ 標準化された制作プロセス ＋ 人による戦略・判断">
+          <div class="blk"><b>AI</b><span>構成案・文章の下書き・実装などの<wbr>作業を<wbr>効率化</span></div>
+          <div class="plus" aria-hidden="true">+</div>
+          <div class="blk"><b>標準化された制作プロセス</b><span>型のある工程で、<wbr>品質を<wbr>保ちながら<wbr>短く</span></div>
+          <div class="plus" aria-hidden="true">+</div>
+          <div class="blk human"><b>人による戦略・判断</b><span>事業理解、<wbr>情報設計、<wbr>最終的な<wbr>品質判断</span></div>
+        </div>
+        <p class="way-cap">によって<wbr>制作工程を<wbr>効率化。<wbr>人は、<wbr><b>「何を伝えるべきか」<wbr>「誰に届けるべきか」<wbr>「どうすれば選ばれるのか」</b>という<wbr>重要な判断に<wbr>集中します。</p>
+      </div>
+    </div>
+
+    <div class="statement reveal">
+      <h3>AIに任せられる<wbr>作業は、<wbr><em>AIへ。</em><br>人にしかできない<wbr>判断は、<wbr><em>人へ。</em></h3>
+      <p>AIによって<wbr>“作業”を<wbr>効率化し、<wbr>人は<wbr>“戦略”に<wbr>時間を使う。<wbr>その結果として、<wbr>従来の<wbr>フルオーダー型の<wbr>Web制作より、<wbr>初期の<wbr>制作費を<wbr>抑えられます。</p>
+    </div>
+
+    <div class="alloc reveal" role="img" aria-label="考え方の比較：従来型は制作そのものに多くのコスト。AI Ready Webは制作工程をAIで効率化し、浮いたリソースをAI検索設計と公開後の改善へ。">
+      <div class="anode"><span class="en">Conventional</span><b>「制作そのもの」に<wbr>多くのコスト</b><span>工数がそのまま<wbr>価格になる</span></div>
+      <div class="arrow" aria-hidden="true"></div>
+      <div class="anode"><span class="en">AI Ready Web</span><b>制作工程を<wbr>AIで効率化</b><span>作業はAI、<wbr>判断は人</span></div>
+      <div class="arrow" aria-hidden="true"></div>
+      <div class="anode acc"><span class="en">Reinvest</span><b>浮いたリソースを、<wbr>AI検索設計と<wbr>公開後の改善へ</b><span>「つくる」から<wbr>「見つけてもらう・育てる」へ</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== 11 料金プラン -->
+<section class="section section-alt" id="pricing" aria-labelledby="pricing-title">
+  <div class="wrap">
+    <div class="section-head pricing-lead reveal">
+      <p class="eyebrow">11<span class="jp">料金プラン</span></p>
+      <h2 id="pricing-title">ホームページ制作を、<wbr>もっと合理的に。</h2>
+      <p class="lead">従来のWeb制作では、<wbr>企画・<wbr>構成・<wbr>ライティング・<wbr>デザイン・<wbr>コーディングなど、<wbr>多くの工程に<wbr>人の時間が<wbr>必要でした。<wbr>AI Ready Webでは、<wbr>AIと<wbr>標準化された<wbr>制作プロセスを<wbr>活用することで、<wbr>制作工程を<wbr>効率化。</p>
+      <p class="lead" style="margin-top:.8rem">ただ<wbr>安くするのではなく、</p>
+      <strong class="hl">「つくること」に<wbr>かかっていた<wbr>コストを、<br class="br-pc">「見つけてもらうこと」と<wbr>「育てること」へ。</strong>
+      <p class="lead" style="margin-top:1rem">これが<wbr>AI Ready Webの<wbr>料金設計です。</p>
+    </div>
+
+    <!-- ▼ 料金プラン：金額・内容はここを編集 -->
+    <div class="plans">
+      <article class="plan reveal" aria-labelledby="plan-start">
+        <h3 class="plan-name" id="plan-start">START</h3>
+        <p class="plan-price"><span class="num">198,000</span><span class="unit">円</span><span class="from">〜</span></p>
+        <p class="plan-desc">まずは小さく、<wbr>AI時代に<wbr>対応した<wbr>Webサイトを<wbr>持ちたい<wbr>企業向け。</p>
+        <p class="plan-meta">想定<b>1〜3ページ程度</b></p>
+        <ul class="plan-incl">
+          <li>Webサイト企画</li>
+          <li>レスポンシブデザイン</li>
+          <li>AIを活用したコピー制作支援</li>
+          <li>SEO基本設定</li>
+          <li>基本的なAI検索を考慮した情報設計</li>
+          <li>基本的な構造化データ</li>
+          <li>AIクローラーへの配慮</li>
+          <li>お問い合わせフォーム</li>
+          <li>アクセス解析環境の設定</li>
+          <li>公開作業</li>
+        </ul>
+        <a class="btn btn-ghost" href="#contact" data-topic="plan-start">STARTについて相談する</a>
+      </article>
+
+      <article class="plan rec reveal" aria-labelledby="plan-ready">
+        <span class="ribbon">Recommended</span>
+        <h3 class="plan-name" id="plan-ready">AI READY</h3>
+        <p class="plan-price"><span class="num">398,000</span><span class="unit">円</span><span class="from">〜</span></p>
+        <p class="plan-desc">AI Ready Webの<wbr>スタンダードプラン。<wbr>単に<wbr>ホームページを<wbr>制作するだけではなく、<wbr><b>「人・Google・AIに<wbr>伝わるWebサイト」</b>を<wbr>本格的に<wbr>設計します。</p>
+        <p class="plan-meta">想定<b>5〜7ページ程度</b></p>
+        <ul class="plan-incl">
+          <li class="base" role="presentation">STARTの内容に加えて</li>
+          <li>公開前AI検索診断</li>
+          <li>競合AI検索調査</li>
+          <li>サービス情報設計</li>
+          <li>ターゲット / 顧客課題整理</li>
+          <li>AI検索を考慮したサイト構造設計</li>
+          <li>コピーライティング支援</li>
+          <li>FAQ設計</li>
+          <li>事例ページ設計</li>
+          <li>構造化データ設計</li>
+          <li>SEO内部設計</li>
+          <li>サイトマップ設計</li>
+          <li>公開前品質チェック</li>
+        </ul>
+        <a class="btn btn-primary" href="#contact" data-topic="plan-ready">AI READYについて相談する</a>
+      </article>
+
+      <article class="plan reveal" aria-labelledby="plan-growth">
+        <h3 class="plan-name" id="plan-growth">GROWTH</h3>
+        <p class="plan-price"><span class="num">598,000</span><span class="unit">円</span><span class="from">〜</span></p>
+        <p class="plan-desc">コンテンツを<wbr>充実させ、<wbr>AI検索・SEOを含めて<wbr>本格的に<wbr>Web集客へ<wbr>取り組みたい<wbr>企業向け。</p>
+        <p class="plan-meta">想定<b>8〜12ページ程度</b></p>
+        <ul class="plan-incl">
+          <li class="base" role="presentation">AI READYの内容に加えて</li>
+          <li>詳細な競合分析</li>
+          <li>AI検索質問設計</li>
+          <li>サービス別ページ設計</li>
+          <li>業種 / 課題別コンテンツ設計</li>
+          <li>導入事例コンテンツ設計</li>
+          <li>FAQ拡充</li>
+          <li>コンテンツ戦略設計</li>
+          <li>公開後の初期分析</li>
+          <li>改善提案</li>
+        </ul>
+        <a class="btn btn-ghost" href="#contact" data-topic="plan-growth">GROWTHについて相談する</a>
+      </article>
+    </div>
+    <p class="note plans-note reveal">※ 要件によって<wbr>個別に<wbr>お見積もりします。<wbr>ページ数、<wbr>撮影、<wbr>特殊機能、<wbr>システム開発、<wbr>EC機能、<wbr>多言語対応、<wbr>大規模な<wbr>コンテンツ制作など、<wbr>基本プランの<wbr>範囲を<wbr>超える場合は<wbr>事前に<wbr>お見積もりを<wbr>提示します。</p>
+
+    <div class="cta-two reveal">
+      <a class="btn btn-primary btn-lg" href="#check" data-topic="check">自社のAI検索状況を無料で診断する</a>
+      <span class="sep">すでに<wbr>リニューアルを<wbr>検討中の方は</span>
+      <a class="btn btn-ghost" href="#contact" data-topic="consult">料金・制作について相談する</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== 12 継続運用 -->
+<section class="section" id="growth" aria-labelledby="growth-title">
+  <div class="wrap growth-grid">
+    <div class="reveal">
+      <p class="eyebrow">12<span class="jp">継続運用</span></p>
+      <h2 id="growth-title" style="font-size:clamp(1.7rem,1rem + 2.2vw,2.6rem);letter-spacing:-.02em">Webサイトは、<br>公開してから<wbr>育てる。</h2>
+      <p class="lead" style="margin-top:1.2rem">検索環境は<wbr>変化し続けます。<wbr>Webサイトを<wbr>一度制作して<wbr>終わりにするのではなく、<wbr><b style="color:var(--ink)">「AIからどう見えているか」<wbr>「競合はどう見えているか」<wbr>「何を改善すべきか」</b>を<wbr>継続的に<wbr>確認しながら、<wbr>サイトを<wbr>育てていきます。</p>
+    </div>
+    <div class="growth-card reveal">
+      <span class="en">AI Search Growth</span>
+      <h3>AI Search Growth</h3>
+      <p class="price"><span class="from" style="font-size:1rem;margin-right:.2rem">月額</span><span class="num">39,800</span><span class="unit">円</span><span class="from">〜</span></p>
+      <p class="incl-title" style="margin-top:1.5rem">サービス内容</p>
+      <ul class="incl">
+        <li>AI検索状況の定期チェック</li>
+        <li>設定したAI検索質問のモニタリング</li>
+        <li>競合企業の登場状況確認</li>
+        <li>自社サイトの引用状況確認</li>
+        <li>SEO / アクセス状況確認</li>
+        <li>AI経由流入の確認</li>
+        <li>改善テーマの抽出</li>
+        <li>FAQ / コンテンツ改善</li>
+        <li>月次レポート</li>
+      </ul>
+      <p class="incl-note">※ モニタリングの対象、<wbr>改善作業量、<wbr>対応範囲は<wbr>プランにより<wbr>設定します。<wbr>詳細は<wbr>ご相談時に<wbr>ご案内します。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== 13 月額型プラン -->
+<section class="section section-alt" id="subscription" aria-labelledby="sub-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">13<span class="jp">もう一つの契約方法</span></p>
+      <h2 id="sub-title">Webサイトを<wbr>「買う」から、<br class="br-pc">Web集客を<wbr>「任せる」へ。</h2>
+      <p class="lead">通常の<wbr>買い切り型とは別に、<wbr>初期費用を<wbr>かけずに<wbr>始められる<wbr>月額型プランも<wbr>ご用意しています。</p>
+    </div>
+    <div class="sub-card reveal">
+      <div>
+        <span class="en" style="font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">Subscription</span>
+        <h3 style="font-size:1.5rem;margin:.3rem 0 .5rem">AI Ready Web Subscription</h3>
+        <p class="plan-desc">制作から<wbr>保守、<wbr>AI検索の<wbr>モニタリングと<wbr>定期的な改善までを、<wbr>月額で<wbr>まとめて<wbr>提供します。</p>
+        <div class="sub-stats">
+          <div class="sub-stat acc"><small>初期費用</small><b>0<i>円</i></b></div>
+          <div class="sub-stat"><small>月額</small><b>49,800<i>円</i><em>〜</em></b></div>
+          <div class="sub-stat"><small>契約期間</small><b>12<i>ヶ月</i><em>〜</em></b></div>
+        </div>
+        <p class="sub-note">※ 契約期間、<wbr>途中解約、<wbr>ドメイン、<wbr>サイトの所有権、<wbr>契約終了後の<wbr>データ移管などの<wbr>条件は、<wbr>ご相談時に<wbr>ご案内します。</p>
+        <p style="margin-top:1.5rem"><a class="btn btn-primary" href="#contact" data-topic="subscription">月額型プランについて相談する</a></p>
+      </div>
+      <div>
+        <p class="incl-title">まとめて提供する内容（例）</p>
+        <ul class="incl" style="grid-template-columns:1fr">
+          <li>Webサイト制作</li>
+          <li>サーバー / 基本保守</li>
+          <li>SEO基本対応</li>
+          <li>AI検索を考慮した情報設計</li>
+          <li>AI検索モニタリング</li>
+          <li>定期的なWebサイト改善</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 料金についてのFAQ -->
+    <div class="faq-mini reveal">
+      <div class="item">
+        <h3><span class="q" aria-hidden="true">Q</span><span>なぜ<wbr>一般的な<wbr>フルオーダー制作より<wbr>価格を<wbr>抑えられるのですか？</span></h3>
+        <p>AIと<wbr>標準化された<wbr>制作プロセスを<wbr>活用し、<wbr>構成案・<wbr>文章制作・<wbr>実装などの<wbr>作業を<wbr>効率化しているためです。</p>
+        <p>人が行うべき<wbr>戦略設計、<wbr>情報整理、<wbr>品質確認などには<wbr>しっかり<wbr>時間を使いながら、<wbr>制作工程全体を<wbr>合理化しています。</p>
+      </div>
+      <div class="item">
+        <h3><span class="q" aria-hidden="true">Q</span><span>AIが<wbr>ホームページを<wbr>自動で<wbr>作るだけですか？</span></h3>
+        <p>いいえ。<wbr>AIは<wbr>制作を<wbr>効率化するための<wbr>ツールとして<wbr>活用します。</p>
+        <p>事業理解、<wbr>ターゲット設定、<wbr>サービスの強みの整理、<wbr>情報設計、<wbr>最終的な<wbr>品質判断など、<wbr>重要な部分には<wbr>人が関わります。</p>
+      </div>
+      <div class="item">
+        <h3><span class="q" aria-hidden="true">Q</span><span>追加料金は<wbr>発生しますか？</span></h3>
+        <p>ページ数、<wbr>撮影、<wbr>特殊機能、<wbr>システム開発、<wbr>EC機能、<wbr>多言語対応、<wbr>大規模な<wbr>コンテンツ制作など、<wbr>基本プランの<wbr>範囲を<wbr>超える場合は、<wbr>事前に<wbr>お見積もりを<wbr>提示します。</p>
+      </div>
+      <div class="item">
+        <h3><span class="q" aria-hidden="true">Q</span><span>AI検索での<wbr>表示は<wbr>保証されますか？</span></h3>
+        <p>特定のAIサービスでの<wbr>掲載や<wbr>表示順位を<wbr>保証するサービスでは<wbr>ありません。</p>
+        <p>AIや<wbr>検索エンジンが<wbr>企業・サービスについて<wbr>理解・<wbr>参照しやすい<wbr>情報環境を<wbr>整え、<wbr>継続的に<wbr>改善していくことを<wbr>目的としています。</p>
+      </div>
+    </div>
+
+    <!-- ブランドとしての結論 -->
+    <div class="closing reveal">
+      <h3>つくることより、<br>見つけてもらうことに<wbr>投資する。</h3>
+      <div>
+        <p>AI Ready Webは、<wbr><b>「高額なWebサイトを<wbr>納品して終わり」ではなく、<wbr>制作コストを<wbr>合理化し、<wbr>その先の<wbr>集客・<wbr>AI検索・<wbr>改善へ<wbr>投資する</b>Web制作サービスです。</p>
+        <div class="cta-two" style="margin-top:1.5rem">
+          <a class="btn btn-primary" href="#check" data-topic="check">自社のAI検索状況を無料で診断する</a>
+          <a class="link" href="#contact" data-topic="consult">料金・制作について相談する</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== 14 ナレッジ（AI検索についての質問に答えるページ群） -->
+<section class="section" id="knowledge" aria-labelledby="knowledge-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">14<span class="jp">ナレッジ</span></p>
+      <h2 id="knowledge-title">AI検索について、<wbr>よく聞かれる質問に<wbr>答えています。</h2>
+      <p class="lead">「AEOとは？」「ChatGPTに自社を表示させるには？」など、<wbr>経営者の方から<wbr>よくいただく質問に、<wbr>結論から<wbr>順に<wbr>説明しています。<wbr>このサイト自体も、<wbr>AIと人の両方に<wbr>伝わる情報設計の<wbr>実例として<wbr>制作しています。</p>
+    </div>
+    <ul class="klist reveal">
+      <li><a href="knowledge/what-is-aeo/"><span class="k-q">AEOとは？</span><span class="k-a">回答型AIや検索エンジンが、質問に答えるときに企業・サービスを正確に理解・参照しやすい状態をWeb上に整える取り組みです。</span></a></li>
+      <li><a href="knowledge/aeo-vs-seo/"><span class="k-q">AEOとSEOの違いは？</span><span class="k-a">SEOは検索結果で見つけてもらう最適化、AEOは質問への回答で参照される情報整備。対立ではなく、SEOを土台に重ねる関係です。</span></a></li>
+      <li><a href="knowledge/what-is-geo/"><span class="k-q">GEOとは？</span><span class="k-a">生成AIの回答に取り上げられやすくする取り組みの総称。AEOとほぼ同じ領域を指します。</span></a></li>
+      <li><a href="knowledge/how-to-appear-in-chatgpt/"><span class="k-q">ChatGPTに自社を表示させるには？</span><span class="k-a">「必ず表示させる」方法はありません。AIが参照するWeb上の情報を、質問に答えられる形で整えることが基本です。</span></a></li>
+      <li><a href="knowledge/ai-search-friendly-website/"><span class="k-q">AI検索に強いホームページとは？</span><span class="k-a">何の会社で、誰のために、何ができ、どこに対応し、なぜ選ばれるのかが、人にもAIにも明確に伝わるサイトです。</span></a></li>
+      <li><a href="knowledge/how-to-choose-ai-search-web-company/"><span class="k-q">AI検索対応のWeb制作会社の選び方</span><span class="k-a">保証をしない、SEOの基本を捨てない、情報設計から始める、技術面を説明できる、公開後に観測する。5つの基準で見極めます。</span></a></li>
+      <li><a href="knowledge/do-smes-need-ai-search/"><span class="k-q">中小企業にAI検索対策は必要？</span><span class="k-a">全社に今すぐ必須ではありませんが、地域や専門性で選ばれる業種ほど影響を受けやすく、早めに情報を整える価値があります。</span></a></li>
+      <li><a href="knowledge/how-to-get-cited-by-ai/"><span class="k-q">AI検索で引用されるには？</span><span class="k-a">質問に直接答える明確な情報、独自の一次情報、クロール可能な技術基盤。この3点を備えたページが参照されやすくなります。</span></a></li>
+      <li><a href="knowledge/ai-era-web-production-difference/"><span class="k-q">AI時代のホームページ制作は何が違う？</span><span class="k-a">読み手に「AI」が加わったため、デザインより情報設計・技術設定・継続改善が制作の中心になります。</span></a></li>
+    </ul>
+    <p style="margin-top:1.5rem"><a class="link" href="knowledge/">ナレッジ一覧を見る</a></p>
+  </div>
+</section>
+
+<!-- ===================================================================== 15 FAQ -->
+<section class="section section-alt" id="faq" aria-labelledby="faq-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">15<span class="jp">よくある質問</span></p>
+      <h2 id="faq-title">ご相談の前に、<wbr>よくいただく<wbr>質問</h2>
+    </div>
+    <div class="faq-list reveal">
+      <details>
+        <summary><span class="q" aria-hidden="true">Q</span><span>AI検索対策をすれば、<wbr>ChatGPTで<wbr>必ず表示されますか？</span><span class="chev" aria-hidden="true"></span></summary>
+        <div class="a"><p>いいえ。<wbr>特定のAIサービスでの<wbr>掲載や<wbr>順位を<wbr>保証するものでは<wbr>ありません。<wbr>AIが<wbr>企業情報を<wbr>理解・<wbr>参照しやすい<wbr>情報環境を<wbr>整えることを<wbr>目的としています。</p></div>
+      </details>
+      <details>
+        <summary><span class="q" aria-hidden="true">Q</span><span>SEOは<wbr>もう必要ありませんか？</span><span class="chev" aria-hidden="true"></span></summary>
+        <div class="a"><p>必要です。<wbr>SEOを捨てて<wbr>AI検索だけに<wbr>対応するのではなく、<wbr>検索エンジンと<wbr>AIの<wbr>双方を<wbr>考えた<wbr>サイト設計を<wbr>行います。</p></div>
+      </details>
+      <details>
+        <summary><span class="q" aria-hidden="true">Q</span><span>AIの知識が<wbr>なくても<wbr>大丈夫ですか？</span><span class="chev" aria-hidden="true"></span></summary>
+        <div class="a"><p>問題ありません。<wbr>専門的な部分は<wbr>こちらで<wbr>設計します。<wbr>御社には、<wbr>事業内容・<wbr>お客様・<wbr>強みなどを<wbr>ヒアリングで<wbr>教えていただきます。</p></div>
+      </details>
+      <details>
+        <summary><span class="q" aria-hidden="true">Q</span><span>現在の<wbr>ホームページを<wbr>活用できますか？</span><span class="chev" aria-hidden="true"></span></summary>
+        <div class="a"><p>現状を<wbr>分析したうえで、<wbr>改修と<wbr>リニューアルの<wbr>どちらが<wbr>適切かを<wbr>ご提案します。</p></div>
+      </details>
+      <details>
+        <summary><span class="q" aria-hidden="true">Q</span><span>どのような<wbr>業種が<wbr>対象ですか？</span><span class="chev" aria-hidden="true"></span></summary>
+        <div class="a"><p>工務店・<wbr>リフォーム会社、<wbr>不動産会社、<wbr>税理士・<wbr>社労士・<wbr>行政書士などの士業、<wbr>中小製造業、<wbr>BtoBサービス企業など、<wbr>問い合わせ1件の価値が<wbr>比較的高い<wbr>地域企業・<wbr>専門企業を<wbr>中心に<wbr>ご支援しています。<wbr>他の業種も<wbr>ご相談ください。</p></div>
+      </details>
+      <details>
+        <summary><span class="q" aria-hidden="true">Q</span><span>料金は<wbr>いくらですか？</span><span class="chev" aria-hidden="true"></span></summary>
+        <div class="a"><p>制作プランは<wbr>START 198,000円〜、<wbr>AI READY 398,000円〜、<wbr>GROWTH 598,000円〜の<wbr>3つです。<wbr>公開後の<wbr>AI Search Growthは<wbr>月額39,800円〜、<wbr>初期費用0円の<wbr>月額型プラン<wbr>（月額49,800円〜、12ヶ月〜）も<wbr>ご用意しています。<wbr>いずれも<wbr>要件によって<wbr>個別に<wbr>お見積もりします。</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== 16 FINAL CTA -->
+<section class="section final" id="contact" aria-labelledby="contact-title">
+  <div class="wrap final-grid">
+    <div class="reveal">
+      <p class="eyebrow">16<span class="jp">無料AI検索診断・ご相談</span></p>
+      <h2 id="contact-title">まずは、<br>AIから<wbr>自社が<wbr>どう見えているか<wbr>知ることから。</h2>
+      <p class="lead">会社名・URLなど<wbr>数項目で<wbr>お申し込みいただけます。<wbr>診断結果を<wbr>もとに、<wbr>改修か<wbr>リニューアルか、<wbr>何から<wbr>始めるべきかを<wbr>ご提案します。</p>
+      <ul class="hint">
+        <li>特定のAIサービスでの<wbr>表示や<wbr>順位を<wbr>保証するものでは<wbr>ありません。</li>
+        <li>診断後に<wbr>制作を<wbr>ご依頼いただく<wbr>必要は<wbr>ありません。</li>
+      </ul>
+    </div>
+    <div class="form-card reveal">
+      <h3 id="form-title">無料AI検索診断を申し込む</h3>
+      <form id="contact-form" method="post" action="">
+        <div class="form-preview" id="form-preview" role="note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v4.5M12 16h.01"/></svg>
+          <p>現在は<wbr>プレビュー表示です。<wbr>フォームの<wbr>送信先が<wbr>未設定のため、<wbr>送信は<wbr>行われません。</p>
+        </div>
+        <div class="field">
+          <label for="f-topic">ご相談内容 <span class="req">必須</span></label>
+          <select id="f-topic" name="topic" required>
+            <option value="check">無料AI検索診断を申し込む</option>
+            <option value="consult">料金・制作について相談する</option>
+            <option value="plan-start">STARTプランについて相談する</option>
+            <option value="plan-ready">AI READYプランについて相談する</option>
+            <option value="plan-growth">GROWTHプランについて相談する</option>
+            <option value="subscription">月額型プラン（Subscription）について相談する</option>
+            <option value="growth">AI Search Growth（継続運用）について相談する</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-company">会社名 <span class="req">必須</span></label>
+          <input type="text" id="f-company" name="company" autocomplete="organization" required>
+        </div>
+        <div class="field">
+          <label for="f-url">ホームページのURL <span class="opt">任意</span></label>
+          <input type="url" id="f-url" name="url" inputmode="url" placeholder="https://" autocomplete="url">
+          <p class="help">ホームページが<wbr>ない場合は<wbr>空欄のままで<wbr>構いません。</p>
+        </div>
+        <div class="two">
+          <div class="field">
+            <label for="f-name">お名前 <span class="req">必須</span></label>
+            <input type="text" id="f-name" name="name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-email">メールアドレス <span class="req">必須</span></label>
+            <input type="email" id="f-email" name="email" autocomplete="email" inputmode="email" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-question">お客様がAIに聞きそうな質問 <span class="opt">任意</span></label>
+          <textarea id="f-question" name="question" placeholder="例：世田谷区でおすすめの工務店は？"></textarea>
+          <p class="help">思いつかない場合は<wbr>空欄でも<wbr>大丈夫です。<wbr>業種や地域から<wbr>こちらで<wbr>設定します。</p>
+          <p class="help hearing-note" id="f-hearing-note" hidden>セルフ診断の<wbr>回答内容を<wbr>添えて<wbr>送信します。</p>
+          <input type="hidden" id="f-hearing" name="hearing" value="">
+        </div>
+        <input type="hidden" name="_subject" value="【AI Ready Web】お問い合わせ・無料診断のお申し込み">
+        <input type="hidden" name="_next" value="https://aireadyweb.jp/contact/thanks/">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="check">
+          <input type="checkbox" id="f-privacy" name="privacy" required>
+          <label for="f-privacy"><a href="privacy/" target="_blank" rel="noopener">プライバシーポリシー</a>に<wbr>同意する <span class="req">必須</span></label>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit" id="form-submit">無料診断を申し込む</button>
+          <p class="form-status" id="form-status" tabindex="-1" hidden></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================================================================== フッター -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-def" id="definition">
+      <h4>AI Ready Webとは</h4>
+      <dl>
+        <div><dt>サービス名</dt><dd>AI Ready Web</dd></div>
+        <div><dt>サービスカテゴリー</dt><dd>AI検索・SEOを考慮したWebサイト制作サービス</dd></div>
+        <div><dt>対象</dt><dd>AIやWebの専門知識を持たない、日本の中小企業を中心とした法人</dd></div>
+        <div><dt>主な提供価値</dt><dd>人・検索エンジン・AIが企業やサービスについて理解しやすい情報環境を、Webサイト上に構築すること</dd></div>
+        <div><dt>AEO（AI検索最適化）の定義</dt><dd>ユーザーの質問に対する有益で明確な情報をWeb上に整備し、AIや検索エンジンがその企業・サービスを正確に理解・参照しやすい状態を作ること。特定のテクニックでAIの順位を操作する施策ではありません。</dd></div>
+      </dl>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#top"><i aria-hidden="true"></i>AI Ready Web</a>
+        <p>人にも、<wbr>Googleにも、<wbr>AIにも<wbr>伝わるWebサイトを<wbr>つくる、<wbr><span class="nw">Web制作 × SEO × AI検索設計</span>の<wbr>サービスです。</p>
+      </div>
+      <div class="footer-col">
+        <h4>Service</h4>
+        <ul>
+          <li><a href="service/">AI Ready Web（サービス詳細）</a></li>
+          <li><a href="ai-search-check/">無料AI検索診断</a></li>
+          <li><a href="growth/">AI Search Growth（継続運用）</a></li>
+          <li><a href="industry/">業種別AI検索対策</a></li>
+          <li>導入事例<span class="soon">準備中</span></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Knowledge</h4>
+        <ul>
+          <li><a href="knowledge/">AI検索・Web集客ナレッジ</a></li>
+          <li><a href="knowledge/what-is-aeo/">AEOとは？</a></li>
+          <li><a href="knowledge/aeo-vs-seo/">AEOとSEOの違い</a></li>
+          <li><a href="knowledge/how-to-appear-in-chatgpt/">ChatGPTに自社を表示させるには</a></li>
+          <li><a href="research/">Research（AI検索の観測記録）</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about/">運営会社</a></li>
+          <li><a href="contact/">お問い合わせ</a></li>
+          <li><a href="privacy/">プライバシーポリシー</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <span>&copy; <span id="copy-year">2026</span> 株式会社ハブグラム / AI Ready Web</span>
+      <span>運営：株式会社ハブグラム</span>
+    </div>
+  </div>
+</footer>
+
+<!-- スマホ用の追従CTA -->
+<div class="sticky-cta" id="sticky-cta">
+  <a class="btn btn-primary" href="#check" data-topic="check">自社のAI検索状況を無料で診断する</a>
+</div>
+
+<!-- 構造化データ（公開前に url / provider を設定してください） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://aireadyweb.jp/#organization",
+      "name": "株式会社ハブグラム",
+      "url": "https://aireadyweb.jp/",
+      "email": "all@hubgram.jp",
+      "brand": { "@type": "Brand", "name": "AI Ready Web" },
+      "description": "AI Ready Web（AI検索・SEOを考慮したWebサイト制作サービス）を運営。人・検索エンジン・AIが企業やサービスについて理解しやすい情報環境をWebサイト上に構築する。",
+      "areaServed": "JP"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://aireadyweb.jp/#website",
+      "name": "AI Ready Web",
+      "url": "https://aireadyweb.jp/",
+      "description": "人にも、Googleにも、AIにも理解されやすいWebサイトをつくる、Web制作 × SEO × AI検索設計のサービス。",
+      "inLanguage": "ja",
+      "publisher": { "@id": "https://aireadyweb.jp/#organization" }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://aireadyweb.jp/#webpage",
+      "url": "https://aireadyweb.jp/",
+      "name": "AI Ready Web｜あなたの会社、ChatGPTに聞いたら出てきますか？",
+      "description": "AI Ready Webは、人にも、Googleにも、AIにも理解されやすいWebサイトをつくる制作サービスです。まずは自社のAI検索状況を無料で診断。",
+      "inLanguage": "ja",
+      "isPartOf": { "@id": "https://aireadyweb.jp/#website" },
+      "about": { "@id": "https://aireadyweb.jp/#service" }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://aireadyweb.jp/#service",
+      "name": "AI Ready Web",
+      "serviceType": "AI検索・SEOを考慮したWebサイト制作サービス",
+      "description": "企業の事業内容・対象顧客・対応地域・強みなどの情報を整理し、人・検索エンジン・AIのいずれからも理解されやすいWebサイトを企画・設計・制作するサービス。特定のAIサービスでの掲載や順位を保証するものではない。",
+      "url": "https://aireadyweb.jp/service/",
+      "areaServed": "JP",
+      "provider": { "@id": "https://aireadyweb.jp/#organization" },
+      "audience": { "@type": "BusinessAudience", "name": "AIやWebの専門知識を持たない日本の中小企業を中心とした法人" },
+      "offers": [
+        { "@type": "Offer", "name": "START", "priceSpecification": { "@type": "PriceSpecification", "minPrice": 198000, "priceCurrency": "JPY" }, "description": "1〜3ページ程度。AI時代に対応した小規模なWebサイト制作。" },
+        { "@type": "Offer", "name": "AI READY", "priceSpecification": { "@type": "PriceSpecification", "minPrice": 398000, "priceCurrency": "JPY" }, "description": "5〜7ページ程度。人・Google・AIに伝わるWebサイトを本格的に設計するスタンダードプラン。" },
+        { "@type": "Offer", "name": "GROWTH", "priceSpecification": { "@type": "PriceSpecification", "minPrice": 598000, "priceCurrency": "JPY" }, "description": "8〜12ページ程度。コンテンツを充実させ、AI検索・SEOを含めて本格的にWeb集客に取り組むプラン。" },
+        { "@type": "Offer", "name": "AI Search Growth", "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": 39800, "priceCurrency": "JPY", "unitText": "月額" }, "description": "月額39,800円〜。公開後のAI検索状況の観測と継続改善。" },
+        { "@type": "Offer", "name": "AI Ready Web Subscription", "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": 49800, "priceCurrency": "JPY", "unitText": "月額" }, "description": "初期費用0円、月額49,800円〜、12ヶ月〜。制作・保守・AI検索モニタリング・定期改善をまとめて提供。" },
+        { "@type": "Offer", "name": "無料AI検索診断", "price": 0, "priceCurrency": "JPY", "description": "見込み客がAIに聞きそうな質問を設定し、自社と競合の登場状況、自社サイトの引用状況、企業情報の整理状況などを診断。" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://aireadyweb.jp/#faq",
+      "mainEntity": [
+        { "@type": "Question", "name": "AI検索対策をすれば、ChatGPTで必ず表示されますか？", "acceptedAnswer": { "@type": "Answer", "text": "いいえ。特定のAIサービスでの掲載や順位を保証するものではありません。AIが企業情報を理解・参照しやすい情報環境を整えることを目的としています。" } },
+        { "@type": "Question", "name": "SEOはもう必要ありませんか？", "acceptedAnswer": { "@type": "Answer", "text": "必要です。SEOを捨ててAI検索だけに対応するのではなく、検索エンジンとAIの双方を考えたサイト設計を行います。" } },
+        { "@type": "Question", "name": "AIの知識がなくても大丈夫ですか？", "acceptedAnswer": { "@type": "Answer", "text": "問題ありません。専門的な部分はこちらで設計します。御社には、事業内容・お客様・強みなどをヒアリングで教えていただきます。" } },
+        { "@type": "Question", "name": "現在のホームページを活用できますか？", "acceptedAnswer": { "@type": "Answer", "text": "現状を分析したうえで、改修とリニューアルのどちらが適切かをご提案します。" } },
+        { "@type": "Question", "name": "なぜ一般的なフルオーダー制作より価格を抑えられるのですか？", "acceptedAnswer": { "@type": "Answer", "text": "AIと標準化された制作プロセスを活用し、構成案・文章制作・実装などの作業を効率化しているためです。人が行うべき戦略設計、情報整理、品質確認などにはしっかり時間を使いながら、制作工程全体を合理化しています。" } },
+        { "@type": "Question", "name": "AIがホームページを自動で作るだけですか？", "acceptedAnswer": { "@type": "Answer", "text": "いいえ。AIは制作を効率化するためのツールとして活用します。事業理解、ターゲット設定、サービスの強みの整理、情報設計、最終的な品質判断など、重要な部分には人が関わります。" } },
+        { "@type": "Question", "name": "追加料金は発生しますか？", "acceptedAnswer": { "@type": "Answer", "text": "ページ数、撮影、特殊機能、システム開発、EC機能、多言語対応、大規模なコンテンツ制作など、基本プランの範囲を超える場合は事前に見積もりを提示します。" } }
+      ]
+    }
+  ]
+}
+</script>
+
+<script>
+/* =====================================================================
+   設定：フォーム送信先はここで設定します（未設定のままではプレビュー扱い）
+   ===================================================================== */
+const CONFIG = { FORM_ENDPOINT: "https://formsubmit.co/all@hubgram.jp" };  // FormSubmit：初回送信後に届く認証メールで有効化
+
+(function () {
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var yearEl = document.getElementById("copy-year");
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+  // --- スマホメニュー ---
+  var menuBtn = document.getElementById("menu-btn");
+  var nav = document.getElementById("site-nav");
+  function closeMenu() { nav.classList.remove("is-open"); menuBtn.setAttribute("aria-expanded", "false"); }
+  menuBtn.addEventListener("click", function () {
+    var open = nav.classList.toggle("is-open");
+    menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  nav.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", closeMenu); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && nav.classList.contains("is-open")) { closeMenu(); menuBtn.focus(); } });
+
+  // --- ファーストビューのAIパネル：質問 → 確認 → 候補整理 を繰り返し再生（動きを減らす設定では静止表示） ---
+  var panel = document.getElementById("ai-panel");
+  if (panel && !reduce) {
+    var stage = 0;
+    var waits = { 0: 700, 1: 1500, 2: 2800, 3: 5200 };
+    panel.setAttribute("data-stage", "0");
+    (function next() {
+      setTimeout(function () {
+        stage = stage >= 3 ? 0 : stage + 1;
+        panel.setAttribute("data-stage", String(stage));
+        next();
+      }, waits[stage]);
+    })();
+  }
+
+  // --- 料金プランなどのCTA → フォームの「ご相談内容」に反映 ---
+  var topic = document.getElementById("f-topic");
+  var formTitle = document.getElementById("form-title");
+  var submitBtn = document.getElementById("form-submit");
+  function syncTopic() {
+    if (!topic) return;
+    var isCheck = topic.value === "check";
+    if (formTitle) formTitle.textContent = isCheck ? "無料AI検索診断を申し込む" : "料金・制作について相談する";
+    if (submitBtn) submitBtn.textContent = isCheck ? "無料診断を申し込む" : "この内容で相談する";
+  }
+  document.querySelectorAll("a[data-topic]").forEach(function (a) {
+    a.addEventListener("click", function () {
+      var v = a.getAttribute("data-topic");
+      if (topic && topic.querySelector('option[value="' + v + '"]')) { topic.value = v; syncTopic(); }
+    });
+  });
+  if (topic) topic.addEventListener("change", syncTopic);
+
+  // --- フォーム送信 ---
+  var form = document.getElementById("contact-form");
+  var status = document.getElementById("form-status");
+  var preview = document.getElementById("form-preview");
+  var hasEndpoint = typeof CONFIG.FORM_ENDPOINT === "string" && CONFIG.FORM_ENDPOINT.trim() !== "";
+  if (hasEndpoint) { form.action = CONFIG.FORM_ENDPOINT; if (preview) preview.hidden = true; }
+  form.addEventListener("submit", function (e) {
+    status.hidden = true;
+    if (!form.checkValidity()) { e.preventDefault(); form.reportValidity(); return; }
+    if (!hasEndpoint) {
+      e.preventDefault();
+      status.innerHTML = "プレビュー表示のため、<wbr>送信は<wbr>行われていません。<wbr>公開前に、<wbr>フォームの<wbr>送信先を<wbr>設定してください。";
+      status.hidden = false;
+      status.focus();
+    }
+  });
+
+  // --- 追従CTA：フォーム・フッター表示中は隠す ---
+  var bar = document.getElementById("sticky-cta");
+  var contact = document.getElementById("contact");
+  var footer = document.querySelector(".site-footer");
+  if ("IntersectionObserver" in window && bar) {
+    var seen = new Set();
+    var barIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { en.isIntersecting ? seen.add(en.target) : seen.delete(en.target); });
+      bar.classList.toggle("is-hidden", seen.size > 0);
+    }, { threshold: 0.05 });
+    barIO.observe(contact);
+    if (footer) barIO.observe(footer);
+  }
+
+  // --- 控えめなフェード（要素は常に表示。画面に入る直前に短く再生） ---
+  if (!reduce && "IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); } });
+    }, { threshold: 0, rootMargin: "0px 0px 12% 0px" });
+    document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+  }
+})();
+</script>
+<script src="assets/hearing.js"></script>
+</body>
+</html>

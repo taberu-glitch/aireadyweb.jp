@@ -1,0 +1,35 @@
+# AI Ready Web — robots.txt
+# 検索エンジンと、AI検索・回答型サービスのクローラーにクロールを許可します。
+User-agent: *
+Allow: /
+
+# OpenAI（ChatGPTの検索機能が参照するクローラー）
+User-agent: OAI-SearchBot
+Allow: /
+
+# OpenAI（ユーザーの操作に応じてページを取得）
+User-agent: ChatGPT-User
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Anthropic（Claude）
+User-agent: ClaudeBot
+Allow: /
+
+# Google（検索）/ Bing
+User-agent: Googlebot
+Allow: /
+User-agent: Bingbot
+Allow: /
+
+# 学習用途のクローラー（GPTBot / Google-Extended など）を制限したい場合は、
+# 以下のコメントを外して Disallow に設定してください。
+# User-agent: GPTBot
+# Disallow: /
+# User-agent: Google-Extended
+# Disallow: /
+
+Sitemap: https://aireadyweb.jp/sitemap.xml
